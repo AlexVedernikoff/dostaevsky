@@ -1,0 +1,47 @@
+@import "./Variables.scss";
+
+.IconSideBar {
+    margin-top: 90px;
+    & > button:hover {
+        background: none;
+    }
+}
+
+.IconSideBarOrders {
+    margin-left: 10px;
+    color: $mainTheme;
+    font-size: small;
+}
+
+.IconSideBarClients {
+    margin-left: 10px;
+    font-size: small;
+}
+
+.OrdersIcon * {
+    fill: $mainTheme;
+}
+
+.IconSize {
+    display: flex !important;
+    justify-items: end;
+    justify-content: flex-start !important;
+    height: 40px;
+    width: 120px;
+    padding-left: 20px !important;
+}
+
+.IconSize2 {
+    display: flex !important;
+    justify-items: end;
+    justify-content: flex-start !important;
+    height: 40px;
+    width: 120px;
+    padding-left: 20px !important;
+}
+.HeaderToolbar > div > button:hover {
+    background: none;
+}
+.DivIsPayed4 > button:hover {
+    background: none;
+}

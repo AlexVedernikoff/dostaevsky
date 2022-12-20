@@ -1,0 +1,44 @@
+$white: #ffffff;
+$grey: #eeeeee;
+$grey-1: #d0d5dd;
+$grey-2: #828ca0;
+$mainTheme: #7b59ce;
+$red: #e31b53;
+$black: #101828;
+
+$statusOrder: (
+    "onKitchen": #b2b2b2,
+    "prepare": #ff5252,
+    "ready": #90d100,
+    "assemble": #00d19f,
+    "intransit": #62aaff,
+    "delivered": #583388,
+    "canceled": #999999
+);
+
+$iconHover: (
+    "main": #dedfe3,
+    "pie": #eeafb5,
+    "dostaevsky": #d9d1ec,
+    "feedback": #cff4cd,
+    "negativeFeedback": #eeafb5
+);
+
+$typePay: (
+    "online": #fce46d,
+    "terminal": #e19df9,
+    "noPaid": #ff5252
+);
+
+$timeRegion: #ff642e;
+$payedIcon: #cfb793;
+
+$tableHead: #a0cfd6;
+$mainTable: #e4f5f7;
+$tableListRow: #faebd7;
+$tableListRowChild: #fab09c;
+
+$bgcolorColumsAndOrders: #f2f4f7;
+
+$IconSearch: #dcd4f4;
+$IconSearchBorder: #f4f1ff;

@@ -1,0 +1,71 @@
+@import "./Variables.scss";
+
+.HeaderToolbar {
+    background-color: $mainTheme;
+}
+
+.HeaderContainer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.HeroGroup {
+    display: flex;
+    flex: 1;
+
+    > * {
+        margin-right: 24px;
+    }
+
+    .button {
+        margin-right: 46px;
+    }
+
+    .button:last-child {
+        margin-right: 0;
+    }
+
+    .SelectFilter {
+        height: 32px;
+        min-width: 152px;
+        width: 193px;
+    }
+}
+
+.HeaderButton {
+    .button button {
+        color: $white;
+        font-weight: 700;
+        text-transform: capitalize;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}
+.containerLogOut {
+    width: 20px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PhoneIcon * {
+    fill: $white;
+}
+
+.UserLoginGroup {
+    > * {
+        margin-right: 16px;
+    }
+
+    display: flex;
+    align-items: center;
+
+    .UserName {
+        margin-right: 12px;
+    }
+}
+
+.MuiDataGrid-main .MuiDataGrid-columnHeaderTitle {
+    text-overflow: initial;
+}
