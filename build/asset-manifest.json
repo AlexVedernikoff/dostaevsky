@@ -1,7 +1,11 @@
 {
   "files": {
     "main.css": "/static/css/main.ef3e1a44.css",
+<<<<<<< HEAD
     "main.js": "/static/js/main.b5e55f46.js",
+=======
+    "main.js": "/static/js/main.373e085c.js",
+>>>>>>> aaf4088977af0fd969a4957b62703ffe81169414
     "static/media/logoAuth.svg": "/static/media/logoAuth.f47eb2721e8aad02b072ef7e808beba5.svg",
     "static/media/logo.svg": "/static/media/logo.4b61decbc3279fd6255c898d9163f007.svg",
     "static/media/dc.svg": "/static/media/dc.3fe54ab59ed5dce7b7133858fcaa01ea.svg",
