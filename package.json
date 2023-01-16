@@ -33,9 +33,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+	"start": "craco start",
+ 	"build": "craco build",
+ 	"test": "craco test",
     "eject": "react-scripts eject",
     "lint": "eslint ./src --max-warnings 100"
   },
@@ -71,6 +71,7 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^7.0.0",
     "@svgr/webpack": "^6.5.0",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
