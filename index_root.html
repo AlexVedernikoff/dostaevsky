@@ -4,9 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dostaevsky - Оператор</title>
+    <title>Operator | Достаевский</title>
 </head>
 <body>
-    <h1>Root index</h1>
+    <script>
+        (async function(){
+            let url = new URL(window.location.href)
+            let code_param = url.searchParams.get("code")
+
+            var params = {
+                'client_id': '56a6cc68-1bcd-48b7-abdc-a41c3b4a738e',
+                'redirect_uri': 'https://online.staging.dostaevsky.ru',
+                'code': code_param,
+                'grant_type': 'authorization_code'
+            };
+
+            var formBody = []
+            for (let property in params) {
+                var encodedKey = encodeURIComponent(property)
+                var encodedValue = encodeURIComponent(params[property])
+                formBody.push(encodedKey + "=" + encodedValue)
+            }
+            formBody = formBody.join("&")
+
+            let response = await fetch('https://auth.dostaevsky.ru/adfs/oauth2/token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                },
+                body: formBody
+            });
+
+            if (response.ok){
+                let json = await response.json()
+                console.log('Token first returned', json)
+                window.location += '/operator/'
+            } else {
+                console.error('server returned', response.status)
+            }
+            
+        })();
+    </script>
 </body>
 </html>
