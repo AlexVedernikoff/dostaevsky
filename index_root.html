@@ -38,11 +38,11 @@
             if (response.ok){
                 let json = await response.json()
                 console.log('Token first returned', json)
-                window.location += '/operator/'
+                window.location.href += 'operator/'
             } else {
                 console.error('server returned', response.status)
             }
-            
+
         })();
     </script>
 </body>
