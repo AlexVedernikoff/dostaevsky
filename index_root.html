@@ -27,7 +27,7 @@
             }
             formBody = formBody.join("&")
 
-            let response = await fetch('https://auth.dostaevsky.ru/adfs/oauth2/token', {
+            let response = await fetch('https://auth.staging.dostaevsky.ru/adfs/oauth2/token', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -38,6 +38,7 @@
             if (response.ok){
                 let json = await response.json()
                 console.log('Token first returned', json)
+                localStorage.setItem('access_token', json)
                 window.location.href += 'operator/'
             } else {
                 console.error('server returned', response.status)
