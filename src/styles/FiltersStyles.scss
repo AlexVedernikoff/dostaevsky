@@ -1,0 +1,361 @@
+@import "./Variables.scss";
+
+.OrderFilters {
+    height: 84px;
+    display: flex;
+    background-color: $bgcolorColumsAndOrders;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    .button button {
+        height: 32px;
+        background: $white;
+        &:hover {
+            background: $white;
+        }
+    }
+}
+.inputSection {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.SelectFilter {
+    box-sizing: border-box;
+    height: 32px;
+    order: 2;
+    &:focus-within + label {
+        color: $mainTheme;
+    }
+    &:focus-visible {
+        outline: none;
+    }
+    & > div > div:focus-visible:hover {
+        outline: none;
+    }
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.labelCheckbox {
+    color: $black;
+    cursor: default;
+    font-weight: normal;
+    line-height: 30px;
+    padding: 10px 0;
+    vertical-align: middle;
+}
+
+.labelCheckbox:before {
+    content: " ";
+    color: $white;
+    display: inline-block;
+    font: 13px/12px FontAwesome;
+    position: relative;
+    text-align: center;
+    text-indent: 0px;
+    width: 12px;
+    height: 12px;
+    background: $white;
+    border: 2px solid $grey-2;
+    border-radius: 2.5px;
+    border-image: initial;
+    vertical-align: middle;
+    display: flex;
+}
+#checkbox-id:checked + .labelCheckbox:before {
+    background-color: $mainTheme;
+    content: "\f00c";
+    border: none;
+    width: 15px;
+    height: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+#checkbox-id:disabled + .labelCheckbox:before {
+    background: $mainTheme;
+    color: #aaa;
+}
+
+.SelectFilter.SelectOrder.MainView {
+    width: 240px;
+}
+
+.SelectFilter.SelectOrder.SelectOrderStatus {
+    width: 214px;
+    height: 32px;
+}
+
+.SelectFilter.SelectProduction {
+    width: 151px;
+    height: 32px;
+}
+
+.SelectFilter.SelectCity.MainView {
+    width: 240px;
+    height: 32px;
+}
+
+.SelectFilter div:hover {
+    border-color: $mainTheme;
+}
+
+.inputOrder {
+    order: 2;
+    border-radius: 4px;
+    border: 1px solid $grey-1;
+    height: 32px;
+    width: 140px;
+    box-sizing: border-box;
+    &:focus-visible {
+        outline: none;
+        border: 1px solid $mainTheme;
+        box-shadow: 0px 0px 0px 2px rgba(123, 89, 206, 0.5);
+    }
+    &:focus-visible + label {
+        color: $mainTheme;
+    }
+}
+.orderNumberInput {
+    order: 2;
+    border-radius: 4px;
+    border: 1px solid $grey-1;
+    height: 32px;
+    width: 130px;
+    box-sizing: border-box;
+    &:focus-visible {
+        outline: none;
+        border: 1px solid $mainTheme;
+        box-shadow: 0px 0px 0px 2px rgba(123, 89, 206, 0.5);
+    }
+    &:focus-visible + label {
+        color: $mainTheme;
+    }
+}
+.phoneNumberInput {
+    order: 2;
+    border-radius: 4px;
+    border: 1px solid $grey-1;
+    height: 32px;
+    width: 140px;
+    box-sizing: border-box;
+    &:focus-visible {
+        outline: none;
+        border: 1px solid $mainTheme;
+        box-shadow: 0px 0px 0px 2px rgba(123, 89, 206, 0.5);
+    }
+    &:focus-visible + label {
+        color: $mainTheme;
+    }
+}
+
+.boxModal:focus-visible {
+    outline: none;
+}
+
+form {
+    display: grid;
+}
+
+.InputGroup {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-left: 0;
+    padding-right: 0;
+    width: auto;
+    height: auto;
+    position: relative;
+
+    &:first-child {
+        padding-left: 12px;
+        padding-right: 0;
+    }
+
+    &:focus-within .label {
+        color: $mainTheme;
+    }
+
+    &:focus-visible {
+        outline: none;
+    }
+}
+.InputGroup .InputList {
+    position: absolute;
+    top: 55px;
+    left: 12px;
+    width: 140px;
+    min-height: 50px;
+    box-shadow: 0px 4px 12px -3px rgba(130, 140, 160, 0.16), 0px 0px 16px 1px rgba(130, 140, 160, 0.12), 0px 4px 4px 2px rgba(130, 140, 160, 0.08);
+    background-color: #fff;
+    border-radius: 4px;
+    z-index: 1;
+    padding: 8px 0;
+}
+.InputGroup .InputListItemText {
+    font-size: 14px;
+    line-height: 16px;
+    color: $black;
+    & span {
+        color: $grey-2;
+    }
+}
+.InputGroup .inputAdress {
+    width: 180px;
+    height: 32px;
+}
+.buttonGroup {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-end;
+
+    &:last-child {
+        padding-right: 12px;
+    }
+}
+
+.InputGroupFilter {
+    .buttonGroup {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        position: sticky;
+        bottom: 0;
+        background: $white;
+
+        .button button {
+            min-width: 146px;
+        }
+
+        .SubmitButton {
+            .button button {
+                background-color: $mainTheme;
+                color: $mainTable;
+            }
+        }
+    }
+}
+.inputSectionFilter .InputGroup {
+    padding-left: 0;
+    padding-top: 16px;
+
+    &:first-child {
+        padding-left: 0;
+    }
+
+    .inputFilter {
+        border-radius: 4px;
+        border: 1px solid $grey-1;
+        height: 32px;
+        &:focus {
+            border: 1px solid $mainTheme;
+        }
+    }
+
+    .inputOrder {
+        box-sizing: border-box;
+        width: initial;
+        &:focus {
+            border: 1px solid $mainTheme;
+        }
+    }
+}
+.InputGroup .OrderInputs {
+    order: 2;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    &:focus-visible + label {
+        color: $mainTheme;
+    }
+    .inputOrder {
+        width: 128px;
+        &:focus-visible + label {
+            color: $mainTheme;
+        }
+    }
+    .iconRubleLeft {
+        width: 9px;
+        height: 20px;
+        position: absolute;
+        left: 35%;
+        top: 5px;
+    }
+    .iconRubleRight {
+        width: 9px;
+        height: 20px;
+        position: absolute;
+        left: 94%;
+        top: 5px;
+    }
+    .line {
+        position: absolute;
+        top: 15px;
+        left: 143px;
+    }
+    .iconCalendarLeft {
+        width: 15px;
+        height: 17px;
+        position: absolute;
+        left: 33%;
+        top: 7px;
+    }
+    .iconCalendarRight {
+        width: 15px;
+        height: 17px;
+        position: absolute;
+        left: 92%;
+        top: 7px;
+    }
+}
+
+#btnReset > button:hover {
+    border: none;
+    box-shadow: none;
+}
+.buttonGroupReset {
+    display: flex;
+    margin-top: 22px;
+    justify-content: center;
+    &:last-child {
+        padding-right: 12px;
+    }
+}
+
+.containerIndicator {
+    position: relative;
+}
+.Indicator {
+    width: 8px;
+    height: 8px;
+    border: 3px solid $IconSearchBorder;
+    border-radius: 50%;
+    background-color: $mainTheme;
+    position: absolute;
+    bottom: 6px;
+    left: 5px;
+}
+.titleFiltersCounter {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.counterFiltersBox {
+    width: 27px;
+    height: 20px;
+    background-color: $mainTheme;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 64px;
+}

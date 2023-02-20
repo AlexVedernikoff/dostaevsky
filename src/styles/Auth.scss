@@ -1,0 +1,182 @@
+@import "./Variables.scss";
+
+html {
+    font-family: Circe;
+}
+body {
+    overflow-y: hidden;
+}
+.logoAuth {
+    z-index: -1;
+    display: block;
+    position: absolute;
+    margin-top: 101px;
+    margin-left: -3px;
+}
+.AuthContainer {
+    width: 1440px;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+}
+.logoAuthForm {
+    width: 180px;
+    height: 56px;
+    margin-top: 40px;
+}
+
+%formWithLogoDefault {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    width: 392px;
+    background-color: $white;
+    z-index: 2;
+    margin-top: 130px;
+    margin-left: 522px;
+    box-shadow: 0px 4px 12px -3px rgba(130, 140, 160, 0.16), 0px 0px 16px 1px rgba(130, 140, 160, 0.12), 0px 4px 4px 2px rgba(130, 140, 160, 0.08);
+    border-radius: 8px;
+}
+%formDefault {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 288px;
+}
+%inputGroupAuthDefault {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+%inputGroupDefault {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &:focus-within .label {
+        color: $mainTheme;
+    }
+}
+%inputDefault {
+    border-radius: 4px;
+    height: 36px;
+    box-sizing: border-box;
+    padding-left: 8px;
+    &::placeholder {
+        font-family: Circe;
+        font-size: 16px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        color: $grey-2;
+    }
+    &:focus-visible {
+        outline: none;
+        border: 1px solid $mainTheme;
+        box-shadow: 0px 0px 0px 2px rgba(123, 89, 206, 0.5);
+    }
+}
+
+.formWithLogoSuccsess {
+    @extend %formWithLogoDefault;
+    height: 392px;
+}
+.formWithLogoSuccsess .form {
+    @extend %formDefault;
+    height: 216px;
+}
+.formWithLogoSuccsess .inputGroupAuth {
+    @extend %inputGroupAuthDefault;
+    height: 136px;
+}
+.formWithLogoSuccsess .inputGroup {
+    @extend %inputGroupDefault;
+    .label {
+        padding-bottom: 2px;
+        font-size: 14px;
+    }
+}
+.formWithLogoSuccsess .inputLogin {
+    @extend %inputDefault;
+    border: 1px solid $grey-1;
+}
+.formWithLogoSuccsess .inputPassword {
+    @extend %inputDefault;
+    border: 1px solid $grey-1;
+}
+
+.eye {
+    position: absolute;
+    width: 20px;
+    height: 22px;
+    margin-left: 89.5%;
+    margin-top: 10.5%;
+    margin-top: 10%;
+}
+.btnSignIn {
+    background-color: $mainTheme;
+    color: $white;
+    height: 40px;
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+    font-family: Circe;
+}
+
+.formWithLogoError {
+    @extend %formWithLogoDefault;
+    height: 432px;
+}
+.formWithLogoError .form {
+    @extend %formDefault;
+    height: 256px;
+}
+.formWithLogoError .inputGroupAuth {
+    @extend %inputGroupAuthDefault;
+    height: 176px;
+}
+.formWithLogoError .inputGroup {
+    @extend %inputGroupDefault;
+    .label {
+        color: $red;
+        padding-bottom: 2px;
+        font-size: 14px;
+    }
+    .errorMessage {
+        color: $red;
+    }
+}
+.formWithLogoError .inputLogin {
+    @extend %inputDefault;
+    border: 1px solid $red;
+    box-shadow: 0px 0px 0px 2px rgba(227, 27, 83, 0.3);
+}
+.formWithLogoError .inputPassword {
+    @extend %inputDefault;
+    border: 1px solid $red;
+    box-shadow: 0px 0px 0px 2px rgba(227, 27, 83, 0.3);
+}
+
+.Footer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 84px;
+}
+
+.textFooter {
+    color: $grey-2;
+    margin-top: 118px;
+    margin-right: 90px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 20px;
+    font-style: normal;
+    font-weight: 400;
+    a {
+        text-decoration: none;
+        color: $mainTheme;
+    }
+    span {
+        color: $mainTheme;
+    }
+}

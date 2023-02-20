@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Web App | Достаевский</title>
+</head>
+<body>
+    <script>
+        (async function(){
+            const url_host      = 'https://online.staging.dostaevsky.ru'
+            const url_operator  = url_host + '/operator'
+            const url_auth      = url_operator + '/api/auth'
+            const client_id     = 'ad6c77e0-d187-4ce6-af1b-50ae592925e6'
+
+            const url_current_page  = new URL(window.location.href)
+            const code_param        = url_current_page.searchParams.get("code")
+
+            var params = {
+                'client_id': client_id,
+                'redirect_uri': url_host,
+                'code': code_param,
+                'grant_type': 'authorization_code'
+            };
+
+            // -- below is old code for auth operator web service -- by strio
+            // let formBody = []
+            // for (let property in params) {
+            //     let encodedKey = encodeURIComponent(property)
+            //     let encodedValue = encodeURIComponent(params[property])
+            //     formBody.push(encodedKey + "=" + encodedValue)
+            // }
+            // formBody = formBody.join("&")
+
+            // let response = await fetch('https://auth.staging.dostaevsky.ru/adfs/oauth2/token', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            //     },
+            //     body: formBody
+            // });
+
+            let response = await fetch(url_auth, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(params)
+            });
+
+
+            if (response.ok){
+                let json = await response.json()
+                localStorage.setItem('tokens', JSON.stringify(json) )
+                window.location.href = url_operator
+            } else {
+                console.error(`${url_auth} returned error`, response.status)
+            }
+
+        })();
+    </script>
+</body>
+</html>

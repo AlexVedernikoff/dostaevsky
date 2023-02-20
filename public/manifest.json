@@ -1,0 +1,9 @@
+{
+    "short_name": "Operator App",
+    "name": "Operator App | Достаевский",
+    "icons": [],
+    "start_url": "/operator",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+}
