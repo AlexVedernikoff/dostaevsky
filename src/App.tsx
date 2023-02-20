@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "../src/styles/App.css";
 import "./styles/MainStyles.scss";
 import MainLayout from "./ui/MainLayout";
 import { Provider } from "react-redux";

@@ -9,8 +9,8 @@ const Application: FC<IApplicationProps> = (props) => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<App />} />
-                <Route path="/auth" element={<Auth />} />
+                <Route path="/operator" element={<App />} />
+                <Route path="/operator/auth" element={<Auth />} />
             </Routes>
         </BrowserRouter>
     );

@@ -6,3 +6,4 @@ export * from "./create-statistic-data";
 export * from "./get-default-value";
 export * from "./get-svg-channel";
 export * from "./get-svg-type-pay";
+export * from "./get-format-time-from-iso8601";

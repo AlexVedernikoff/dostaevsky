@@ -10,7 +10,6 @@ import { roleList } from "../data/dataHeader";
 import { customStylesHeader } from "../ui/common";
 
 function Header() {
-    const [selectedOptions, setSelectedOptions] = useState([]);
 
     return (
         <>
@@ -30,11 +29,6 @@ function Header() {
                             defaultValue={[{ label: "Оператор", value: 1 }]}
                             name="role"
                             className="SelectFilter"
-                            onChange={(options) => {
-                                if (Array.isArray(options)) {
-                                    setSelectedOptions(options.map((opt) => opt.label));
-                                }
-                            }}
                             options={roleList}
                             styles={customStylesHeader}
                         />
@@ -47,7 +41,7 @@ function Header() {
                 </div>
                 <div className="UserLoginGroup">
                     <div className="UserName">
-                        <p>Иванова Анна</p>
+                        <p></p>
                     </div>
                     <ImageAvatar />
                     <Link className="containerLogOut" to={"/auth"}>

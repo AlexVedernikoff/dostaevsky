@@ -10,8 +10,18 @@ import { ReactComponent as CloseMini } from "../svg/closeMini.svg";
 import { ImageButton } from "./common";
 import { getColorSvg } from "../application";
 import { rows } from "../data/statisticPaymentCard";
+import { useAppSelector } from "hooks/use-redux";
+
+export enum PayTypeNameEnum {
+    cash = "Наличные",
+    no_pay = "Без оплаты",
+    online = "Онлайн",
+    mobile_terminal = "М/терминал"
+}
 
 const StatisticPaymentCard = () => {
+    const payment_types = useAppSelector((state) => state.table.summary.payment_types);
+
     return (
         <div className="StatisticCard StatisticPaymentCard">
             <TableContainer component={Paper}>
@@ -27,14 +37,14 @@ const StatisticPaymentCard = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
-                            <TableRow key={row.name} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                        {payment_types.map((row) => (
+                            <TableRow key={PayTypeNameEnum[row.payment_type]} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                                 <TableCell component="th" scope="row">
-                                    {getColorSvg(row.name)}&nbsp;&nbsp;{row.name}
+                                    {getColorSvg(PayTypeNameEnum[row.payment_type])}&nbsp;&nbsp;{PayTypeNameEnum[row.payment_type]}
                                 </TableCell>
-                                <TableCell align="right">{row.quantity}</TableCell>
-                                <TableCell align="right">{row.sum}</TableCell>
-                                <TableCell align="right">{row.percent}</TableCell>
+                                <TableCell align="right">{row.count}</TableCell>
+                                <TableCell align="right">{row.total_price}</TableCell>
+                                <TableCell align="right">{`${row.percentage}%`}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

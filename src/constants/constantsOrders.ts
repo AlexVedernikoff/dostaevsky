@@ -1,4 +1,4 @@
-import { Filters } from "../models";
+import { FilterParams, Filters } from "../models";
 
 export const style = {
     position: "absolute" as "absolute",
@@ -12,6 +12,32 @@ export const style = {
     boxSizing: " border-box"
 };
 export const defaultFieldsSelect: Filters = {
-    status_order: [{ label: "Принят", value: 1 }],
-    manufacture: [{ label: "Офис", value: 1 }]
+    status_order: [{ label: "Принят", value: "accepted" }],
+    manufacture: [{ label: "Офис", value: 9 }]
+};
+
+export const defaultFilterableFields: FilterParams = {
+    status: defaultFieldsSelect.status_order[0].value,
+    manufactory_id: defaultFieldsSelect.manufacture[0].value
+};
+
+export const FilteredFieldsInDB = {
+    number_order: "id",
+    number_telephone: "client_phone",
+    status_order: "status",
+    city: "city_id",
+    address: "address",
+    manufacture: "manufactory_id",
+    brand: "brand",
+    fromAmount: "total_price_from",
+    toAmount: "total_price_to",
+    paymentType: "payment_type",
+    source: "source",
+    stock: "promo_id",
+    courierName: "courier_id",
+    typeDeliver: "delivery_type",
+    managerName: "manager_id",
+    clientFeedback: "client_feedback",
+    claimType: "complaint_type",
+    product: "product_id"
 };

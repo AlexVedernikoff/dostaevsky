@@ -1,4 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import dataFilters from "./dataFilters";
 import mainFiltersSlice from "./mainState";
 import modalSlice from "./modalState";
 import tableSlice from "./tableState";
@@ -6,7 +7,8 @@ import tableSlice from "./tableState";
 const rootReducer = combineReducers({
     mainFilters: mainFiltersSlice,
     modal: modalSlice,
-    table: tableSlice
+    table: tableSlice,
+    dataFilters: dataFilters
 });
 
 const store = configureStore({

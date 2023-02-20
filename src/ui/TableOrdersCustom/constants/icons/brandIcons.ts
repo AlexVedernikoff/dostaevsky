@@ -2,16 +2,16 @@ import { ReactComponent as HomePie } from "../../../../svg/HomePie.svg";
 import { ReactComponent as Dostoevsky } from "../../../../svg/dostoevsky.svg";
 
 export const brandIcons = {
-    homePie: HomePie,
-    dostoevsky: Dostoevsky
+    pirogidomoy: HomePie,
+    dostaevsky: Dostoevsky
 };
 
 export const brandTitles = {
-    homePie: "Пироги домой",
-    dostoevsky: "Достоевский"
+    pirogidomoy: "Пироги домой",
+    dostaevsky: "Достаевский"
 };
 
 export const brandClassName = {
-    homePie: "iconBrandPie",
-    dostoevsky: "iconBrandDostoevsky"
+    pirogidomoy: "iconBrandPie",
+    dostaevsky: "iconBrandDostoevsky"
 };

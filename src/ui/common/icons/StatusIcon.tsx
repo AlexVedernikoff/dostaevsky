@@ -11,7 +11,7 @@ export const StatusIcon = (props) => {
     return (
         <div className="StatusContainer DefaultStatus">
             <div className={className}>{value}</div>
-            {row.isPayed && (
+            {row.is_paid && (
                 <div className="payedIcon">
                     <IconTooltip sx={StyleArrow} title="Оплачено">
                         <IsPayed />

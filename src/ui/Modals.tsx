@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "hook/use-redux";
-import { closeStateModal, resetModalState, changeInput, changeSelect } from "../store/modalState";
+import React, { useState, useEffect, useCallback } from "react";
+import { useAppDispatch, useAppSelector } from "hooks/use-redux";
+import { closeStateModal, changeInput, changeSelect, resetState } from "../store/mainState";
 import { changeMainState } from "../store/mainState";
 import { getCountFilters, getDefaultValue } from "../application";
-import useDebounce from "hook/use-debounce";
+import useDebounce from "hooks/use-debounce";
 import { CustomSelect, MainButton } from "./common";
 import { data } from "../data/dataOrder";
 import { v4 as uuidv4 } from "uuid";
@@ -21,19 +21,50 @@ import { ReactComponent as Line } from "../svg/line.svg";
 import { ReactComponent as Calendar } from "../svg/calendar.svg";
 
 import { InputValueDispatch } from "../models";
+import { fetchFilteredOrders } from "store/tableState";
 
 function Modals() {
     const dispatch = useAppDispatch();
-    const stateModal = useAppSelector((state) => state.modal);
+    const stateModal = useAppSelector((state) => state.mainFilters);
+
+    const filteredOrders = useCallback(() => {
+        dispatch(fetchFilteredOrders());
+    }, [dispatch]);
 
     function resetFilters() {
-        dispatch(resetModalState());
-        dispatch(changeMainState({ value: {} }));
+        dispatch(resetState());
+        filteredOrders();
     }
 
     function applyFilters() {
         dispatch(changeMainState({ value: stateModal.filters }));
         dispatch(closeStateModal());
+        filteredOrders();
+    }
+
+    const dataFilters = useAppSelector((state) => state.dataFilters);
+
+    const cityList = [];
+    const productionList = [];
+    const stockList = [];
+    const claimTypeList = [];
+
+    if (dataFilters.isReceived) {
+        dataFilters.data.cities.map((city) => {
+            return cityList.push({ label: city.name, value: city.id });
+        });
+
+        dataFilters.data.manufactories.map((manufactor) => {
+            return productionList.push({ label: manufactor.name, value: manufactor.id });
+        });
+
+        dataFilters.data.promos.map((promo) => {
+            return stockList.push({ label: promo.name, value: promo.id });
+        });
+
+        dataFilters.data.complaints.map((complaint) => {
+            return claimTypeList.push({ label: complaint.name, value: complaint.key });
+        });
     }
 
     let initialValues: InputValueDispatch;
@@ -109,7 +140,7 @@ function Modals() {
                                 <CustomSelect
                                     modal={true}
                                     multi={true}
-                                    options={data.cityList}
+                                    options={cityList}
                                     key={uuidv4()}
                                     property={"city"}
                                     defaultValue={getDefaultValue(stateModal.filters.city)}
@@ -133,7 +164,7 @@ function Modals() {
                                 <CustomSelect
                                     modal={true}
                                     multi={true}
-                                    options={data.productionList}
+                                    options={productionList}
                                     key={uuidv4()}
                                     property={"manufacture"}
                                     defaultValue={getDefaultValue(stateModal.filters.manufacture)}
@@ -209,7 +240,7 @@ function Modals() {
                                 <CustomSelect
                                     modal={true}
                                     multi={true}
-                                    options={data.stockList}
+                                    options={stockList}
                                     key={uuidv4()}
                                     property={"stock"}
                                     defaultValue={getDefaultValue(stateModal.filters.stock)}
@@ -275,7 +306,7 @@ function Modals() {
                                 <CustomSelect
                                     modal={true}
                                     multi={true}
-                                    options={data.claimTypeList}
+                                    options={claimTypeList}
                                     key={uuidv4()}
                                     property={"claimType"}
                                     defaultValue={getDefaultValue(stateModal.filters.claimType)}

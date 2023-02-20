@@ -64,3 +64,28 @@ export interface Sort {
 export type FormError<T extends string | number | symbol> = {
     [key in T]?: string;
 };
+
+export interface FilterParams {
+    id?: number;
+    client_phone?: string;
+    status?: string;
+    city_id?: number;
+    address?: string;
+    manufactory_id?: number;
+    brand?: string;
+    total_price_from?: number;
+    total_price_to?: number;
+    payment_type?: string;
+    source?: string;
+    promo_id?: number;
+    courier_id?: number;
+    delivery_type?: string;
+    manager_id?: number;
+    client_feedback?: string;
+    complaint_type?: string;
+    product_id?: number;
+    deliver_at_from?: string;
+    deliver_at_to?: string;
+    created_at_from?: string;
+    created_at_to?: string;
+}

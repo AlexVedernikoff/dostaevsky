@@ -1,14 +1,14 @@
-import { InputValue } from "../models";
+import { InputValue, InputValueString } from "../models";
 
-const orderList: InputValue[] = [
-    { label: "Принят", value: 1 },
-    { label: "На кухне", value: 2 },
-    { label: "Готовится", value: 3 },
-    { label: "Готов", value: 4 },
-    { label: "Собирается", value: 5 },
-    { label: "В пути", value: 6 },
-    { label: "Доставлен", value: 7 },
-    { label: "Отменен", value: 8 }
+const orderList: InputValueString[] = [
+    { label: "Принят", value: "accepted" },
+    { label: "На кухне", value: "on_kitchen" },
+    { label: "Готовится", value: "cooking" },
+    { label: "Готов", value: "cooked" },
+    { label: "Собирается", value: "packaging" },
+    { label: "В пути", value: "delivering" },
+    { label: "Доставлен", value: "delivered" },
+    { label: "Отменен", value: "canceled" }
 ];
 const cityList: InputValue[] = [
     { label: "Санк-Петербург", value: 1 },
@@ -27,19 +27,19 @@ const brandList: InputValue[] = [
     { label: "Достаевский", value: 2 }
 ];
 
-const paymentTypeList: InputValue[] = [
-    { label: "Наличные", value: 1 },
-    { label: "Онлайн", value: 2 },
-    { label: "М/терминал", value: 3 },
-    { label: "Без оплаты", value: 4 }
+const paymentTypeList: InputValueString[] = [
+    { label: "Наличные", value: "cash" },
+    { label: "Онлайн", value: "online" },
+    { label: "М/терминал", value: "mobile_terminal" },
+    { label: "Без оплаты", value: "no_pay" }
 ];
 
-const sourceList: InputValue[] = [
-    { label: "Android", value: 1 },
-    { label: "Сайт", value: 2 },
-    { label: "Delivery club", value: 3 },
-    { label: "Call-центр", value: 4 },
-    { label: "iOS", value: 5 }
+const sourceList: InputValueString[] = [
+    { label: "Android", value: "android" },
+    { label: "Сайт", value: "web" },
+    { label: "Delivery club", value: "delivery_club" },
+    { label: "Call-центр", value: "phone" },
+    { label: "iOS", value: "ios" }
 ];
 
 const stockList: InputValue[] = [

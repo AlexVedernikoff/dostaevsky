@@ -1,3 +1,4 @@
+import { FilterParams } from "./app";
 import { Filters, InputValue } from "./filters";
 
 export interface InputValueDispatch {
@@ -15,7 +16,6 @@ export interface PayloadSelect {
     value: InputValue[];
 }
 
-
 export interface PayloadMainState {
     value: Filters;
 }
@@ -25,7 +25,9 @@ export interface StateModal {
     filters: Filters;
 }
 export interface StateMain {
+    open: boolean;
     filters: Filters;
+    FilterableFields: FilterParams;
 }
 export interface PayloadModal {
     value: boolean;

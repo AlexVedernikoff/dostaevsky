@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import "../../styles/TableStyles.scss";
-import { getTypeDelay } from "../../application";
-import { CustomPagination, NoRowsOverlay, IconChannel, OrderNumber, BrandIcon, StatusIcon, Deliver, FeedbackIcon } from "../common";
-
-import { useAppSelector } from "hook/use-redux";
+import { getFormatTimeFromIso8601, getTypeDelay } from "../../application";
+import { Footer, NoRowsOverlay, IconChannel, OrderNumber, BrandIcon, StatusIcon, Deliver, FeedbackIcon } from "../common";
+import { useAppDispatch, useAppSelector } from "hooks/use-redux";
+import { fetchFilteredOrders } from "store/tableState";
 
 const columns: GridColDef[] = [
     {
-        field: "orderNumber",
+        field: "id",
         headerName: "№ заказа",
         renderCell: OrderNumber,
         width: 76,
@@ -18,7 +18,7 @@ const columns: GridColDef[] = [
         cellClassName: "MuiDataGrid-cell--textCenter"
     },
     {
-        field: "channel",
+        field: "source",
         headerName: "Канал",
         renderCell: IconChannel,
         width: 38,
@@ -27,15 +27,15 @@ const columns: GridColDef[] = [
         cellClassName: "MuiDataGrid-cell--textCenter"
     },
     {
-        field: "processed",
+        field: "created_at",
         headerName: "Оформлен",
         renderCell: BrandIcon,
         width: 118,
         maxWidth: 118,
         flex: 1
     },
-    { field: "name", headerName: "Имя", width: 80, maxWidth: 90, flex: 1 },
-    { field: "phone", headerName: "Телефон", width: 104, maxWidth: 104, flex: 1 },
+    { field: "client_name", headerName: "Имя", width: 80, maxWidth: 90, flex: 1 },
+    { field: "client_phone", headerName: "Телефон", width: 104, maxWidth: 104, flex: 1 },
     {
         field: "status",
         headerName: "Статус",
@@ -45,7 +45,7 @@ const columns: GridColDef[] = [
         flex: 1
     },
     {
-        field: "amount",
+        field: "total_price",
         headerName: "Сумма, ₽ ",
         width: 62,
         maxWidth: 62,
@@ -53,16 +53,16 @@ const columns: GridColDef[] = [
         cellClassName: "MuiDataGrid-cell--textCenter"
     },
     {
-        field: "deliveryTime",
+        field: "deliver_at",
         headerName: "Доставить",
         renderCell: Deliver,
         width: 116,
         maxWidth: 118,
         flex: 1
     },
-    { field: "city", headerName: "Город", width: 110, maxWidth: 112, flex: 1 },
+    { field: "city_name", headerName: "Город", width: 110, maxWidth: 112, flex: 1 },
     { field: "address", headerName: "Адрес доставки", width: 110, maxWidth: 192, flex: 1 },
-    { field: "courier", headerName: "Курьер", width: 100, maxWidth: 94, flex: 1 },
+    { field: "courier_name", headerName: "Курьер", width: 100, maxWidth: 94, flex: 1 },
     {
         field: "client_feedback",
         headerName: "Отзыв",
@@ -75,14 +75,32 @@ const columns: GridColDef[] = [
 ];
 
 function TableOrders() {
-    const state = useAppSelector((state) => state.table.content);
+    const table = useAppSelector((state) => state.table);
+    const dataFilters = useAppSelector((state) => state.dataFilters);
+    const dispatch = useAppDispatch();
+
+    let orders = table.orders;
+
+    if (dataFilters.isReceived) {
+        orders = orders.map((order) => {
+            const dataCity = dataFilters.data.cities.find((city) => city.id === order.city_id);
+            return {
+                ...order,
+                city_name: dataCity.name
+            };
+        });
+    }
+
+    useEffect(() => {
+        dispatch(fetchFilteredOrders());
+    }, [dispatch]);
 
     return (
         <div>
             <Box
                 sx={{
-                    boder: "none",
-                    height: 400,
+                    border: "none",
+                    height: "calc(100vh - 260px)",
                     width: "100%",
                     "& .delay3": {
                         bgcolor: "#FFE0D5"
@@ -97,18 +115,19 @@ function TableOrders() {
             >
                 <div className="dataGrid">
                     <DataGrid
-                        rows={state}
+                        rows={orders}
+                        loading={table.isLoading}
                         columns={columns}
-                        getRowClassName={(params) => `${getTypeDelay(params.row.processed)}`}
+                        getRowClassName={(params) => `${getTypeDelay(getFormatTimeFromIso8601(params.row.created_at))}`}
                         disableColumnFilter={true}
                         disableColumnMenu={true}
                         showColumnRightBorder={false}
-                        pageSize={5}
+                        pageSize={100}
                         rowsPerPageOptions={[5]}
-                        pagination
+                        pagination={true}
                         style={{ border: "none" }}
                         components={{
-                            Pagination: CustomPagination,
+                            Pagination: Footer,
                             NoRowsOverlay
                         }}
                     />

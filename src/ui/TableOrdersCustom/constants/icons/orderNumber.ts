@@ -1,6 +1,6 @@
 export const orderNumber = {
     online: "onlineOrder",
     cash: "cashOrder",
-    terminal: "terminalOrder",
-    notPaid: "notPaidOrder"
+    mobile_terminal: "terminalOrder",
+    no_pay: "notPaidOrder"
 };

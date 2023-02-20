@@ -10,8 +10,19 @@ import { ReactComponent as CloseMini } from "../svg/closeMini.svg";
 import { ImageButton } from "./common";
 import { rows } from "../data/statisticChannelCard";
 import { getSVG } from "../application";
+import { useAppSelector } from "hooks/use-redux";
+
+export enum SourcesNameEnum {
+    ios = "iOS",
+    phone = "Call-центр",
+    website = "Сайт",
+    android = "Android",
+    delivery_club = "Delivery club"
+}
 
 const StatisticChannelCard = () => {
+    const sources = useAppSelector((state) => state.table.summary.sources);
+
     return (
         <div className="StatisticCard StatisticChannelCard">
             <TableContainer component={Paper}>
@@ -27,14 +38,14 @@ const StatisticChannelCard = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
-                            <TableRow key={row.name} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                        {sources.map((row) => (
+                            <TableRow key={SourcesNameEnum[row.source]} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                                 <TableCell component="th" scope="row">
-                                    {getSVG(row.name)}&nbsp;&nbsp;{row.name}
+                                    {getSVG(SourcesNameEnum[row.source])}&nbsp;&nbsp;{SourcesNameEnum[row.source]}
                                 </TableCell>
-                                <TableCell align="right">{row.quantity}</TableCell>
-                                <TableCell align="right">{row.sum}</TableCell>
-                                <TableCell align="right">{row.percent}</TableCell>
+                                <TableCell align="right">{row.count}</TableCell>
+                                <TableCell align="right">{}</TableCell>
+                                <TableCell align="right">{`${row.percentage}%`}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

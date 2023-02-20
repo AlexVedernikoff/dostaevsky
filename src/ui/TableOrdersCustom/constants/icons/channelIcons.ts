@@ -5,17 +5,17 @@ import { ReactComponent as DeliveryClub } from "../../../../svg/dc.svg";
 import { ReactComponent as Android } from "../../../../svg/android.svg";
 
 export const channelIcons = {
-    web: Web,
+    website: Web,
     android: Android,
-    iOS: IOS,
-    deliveryClub: DeliveryClub,
-    callCenter: CallCenter
+    ios: IOS,
+    delivery_club: DeliveryClub,
+    phone: CallCenter
 };
 
 export const channelTitles = {
-    web: "Сайт",
+    website: "Сайт",
     android: "Android",
-    iOS: "iOS",
-    deliveryClub: "Delivery Club",
-    callCenter: "Call - центр"
+    ios: "iOS",
+    delivery_club: "Delivery Club",
+    phone: "Call - центр"
 };

@@ -1,25 +1,27 @@
 import React from "react";
 import { IconTooltip, StyleArrow } from "../../common";
-import { getRegionTime } from "../../../application";
+import { getFormatTimeFromIso8601, getRegionTime } from "../../../application";
 import { ReactComponent as PreOrder } from "../../../svg/preorder.svg";
 
 export const Deliver = (props) => {
     const { value, row } = props;
+
+    const time = getFormatTimeFromIso8601(value);
     return (
         <div className="deliverGroup">
-            {row.city === "Новосибирск" ? (
+            {row.city === 5 ? (
                 <div className="deliverTime">
                     <IconTooltip sx={StyleArrow} title="Московское время">
-                        <div className="cursorTooltip">{value}</div>
+                        <div className="cursorTooltip">{time}</div>
                     </IconTooltip>
                     <IconTooltip sx={StyleArrow} title="Время региона">
-                        <div className="timeRegion cursorTooltip">{getRegionTime(value)}</div>
+                        <div className="timeRegion cursorTooltip">{getRegionTime(time)}</div>
                     </IconTooltip>
                 </div>
             ) : (
-                <div className="deliverTime">{value}</div>
+                <div className="deliverTime">{time}</div>
             )}
-            {row.preOrder && (
+            {row.is_preorder && (
                 <div className="divIconDeliver">
                     <IconTooltip sx={StyleArrow} title="Предзаказ">
                         <PreOrder />

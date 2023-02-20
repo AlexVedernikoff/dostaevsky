@@ -1,1 +1,18 @@
-@font-face{font-family:circe;font-style:normal;font-weight:400;src:local('Circe'),url(https://fonts.cdnfonts.com/s/13503/CRC55.woff) format('woff')}@font-face{font-family:circe extra light;font-style:normal;font-weight:300;src:local('Circe Extra Light'),url(https://fonts.cdnfonts.com/s/13503/CRC25.woff) format('woff')}@font-face{font-family:circe light;font-style:normal;font-weight:350;src:local('Circe Light'),url(https://fonts.cdnfonts.com/s/13503/CRC35.woff) format('woff')}@font-face{font-family:circe bold;font-style:normal;font-weight:700;src:local('Circe Bold'),url(https://fonts.cdnfonts.com/s/13503/CRC65.woff) format('woff')}
+@font-face {
+	font-family: circe;
+	font-style: normal;
+	font-weight: 400;
+	src: local('Circe'),url(fonts/CRC55.woff) format('woff');
+}
+
+@font-face {
+	font-family:circe extra light;font-style:normal;font-weight:300;src:local('Circe Extra Light'),url(fonts/CRC25.woff) format('woff');
+}
+
+@font-face {
+	font-family:circe light;font-style:normal;font-weight:350;src:local('Circe Light'),url(fonts/CRC35.woff) format('woff');
+}
+
+@font-face {
+	font-family:circe bold;font-style:normal;font-weight:700;src:local('Circe Bold'),url(fonts/CRC65.woff) format('woff');
+}
