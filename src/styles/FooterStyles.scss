@@ -4,6 +4,7 @@
     flex: 1;
     position: relative;
 }
+
 .StatisticsContainer .StatisticList {
     display: flex;
     list-style-type: none;
@@ -16,10 +17,11 @@
         font-weight: 400;
         align-items: center;
 
-        > p {
+        >p {
             font-weight: 700;
             margin: 0;
             color: $mainTheme;
+            white-space: pre;
         }
     }
 
@@ -44,17 +46,21 @@
         padding: 5px 0px;
     }
 }
+
 .StatisticCard .MuiTableContainer-root {
     padding: 16px;
     filter: drop-shadow(0px 4px 12px rgba(130, 140, 160, 0.5));
     box-shadow: none;
+
     .MuiTableHead-root {
         position: relative;
+
         .button.IconButton {
             position: absolute;
             top: 14px;
             right: 0;
         }
+
         .MuiTableCell-root {
             padding: 10px 0px;
             border-bottom: none;
@@ -75,9 +81,11 @@
         bottom: -9px;
     }
 }
+
 .StatisticChannelCard {
     bottom: 126%;
     right: -174%;
+
     &:after {
         content: "";
         width: 0;
@@ -90,9 +98,11 @@
         bottom: -9px;
     }
 }
+
 .thContainer {
     display: flex;
-    > p {
+
+    >p {
         padding-left: 4px;
         margin: 0;
     }

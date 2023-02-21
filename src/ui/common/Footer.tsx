@@ -16,13 +16,13 @@ export function Footer() {
             <div className="StatisticsContainer">
                 <ul className="StatisticList">
                     <li className="StatisticItem">
-                        Всего заказов: <p> {getFormatNumber(summary.total_orders)}</p>
+                        Всего заказов: <p>  {getFormatNumber(summary.total_orders)}</p>
                     </li>
                     <li className="StatisticItem">
-                        Сумма заказов, ₽: <p> {getFormatNumber(summary.orders_total_price)}</p>
+                        Сумма заказов, ₽: <p>  {getFormatNumber(summary.orders_total_price)}</p>
                     </li>
                     <li className="StatisticItem">
-                        Средний чек, ₽: <p> {getFormatNumber(summary.orders_average_total_price)}</p>
+                        Средний чек, ₽: <p>  {getFormatNumber(summary.orders_average_total_price)}</p>
                     </li>
                     <li className="StatisticItem ChipItem" onMouseEnter={() => setIsShownPaymentType(true)} onMouseLeave={() => setIsShownPaymentType(false)}>
                         Тип оплаты
