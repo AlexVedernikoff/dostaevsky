@@ -2,7 +2,7 @@
 	font-family: circe;
 	font-style: normal;
 	font-weight: 400;
-	src: local('Circe'), url(fonts/CRC55.woff) format('woff');
+	src: local('Circe'), url(/fonts/CRC55.woff) format('woff');
 }
 
 @font-face {
@@ -16,7 +16,7 @@
 	font-family: circe light;
 	font-style: normal;
 	font-weight: 350;
-	src: local('Circe Light'), url(fonts/CRC35.woff) format('woff');
+	src: local('Circe Light'), url("./fonts/CRC35.woff") format('woff');
 }
 
 @font-face {
@@ -25,7 +25,3 @@
 	font-weight: 700;
 	src: local('Circe Bold'), url(fonts/CRC65.woff) format('woff');
 }
-
-/* body {
-	overflow-y: scroll !important;
-} */
