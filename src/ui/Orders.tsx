@@ -213,7 +213,7 @@ function Orders() {
                         </div>
 
                         <MainButton onClick={() => dispatch(openStateModal({ value: state }))}>
-                            Все фильтры
+                            Все&#160;фильтры
                             {getIndicator(state) && (
                                 <div className="containerIndicator">
                                     <div className="Indicator"></div>

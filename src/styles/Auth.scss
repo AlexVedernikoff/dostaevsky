@@ -1,7 +1,7 @@
 @import "./Variables.scss";
 
 html {
-    font-family: Circe;
+    font-family: Circe, sans-serif;
 }
 
 body {
@@ -74,7 +74,8 @@ body {
     padding-left: 8px;
 
     &::placeholder {
-        font-family: Circe;
+        font-family: Circe, sans-serif;
+        ;
         font-size: 16px;
         padding-top: 8px;
         padding-bottom: 8px;
@@ -138,7 +139,7 @@ body {
     border-radius: 4px;
     border: none;
     font-size: 16px;
-    font-family: Circe;
+    font-family: Circe, sans-serif;
 }
 
 .formWithLogoError {

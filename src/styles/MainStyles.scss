@@ -5,7 +5,7 @@
 @import "./HeaderStyles.scss";
 
 html {
-    font-family: Circe;
+    font-family: Circe, sans-serif;
 }
 
 .Order {
@@ -27,7 +27,7 @@ html {
     font-weight: 700;
     text-transform: capitalize;
     border: 1px solid $mainTheme;
-    font-family: Circe;
+    font-family: Circe, sans-serif;
     z-index: 1;
 }
 
@@ -81,7 +81,7 @@ html {
         color: inherit;
         gap: 10px;
         outline: none;
-        font-family: Circe;
+        font-family: Circe, sans-serif;
         text-transform: none;
         font-size: 16px;
 

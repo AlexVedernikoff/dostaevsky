@@ -13,7 +13,7 @@ const OrderToolbar = () => {
         <div className="OrderToolbar">
             <div className="TitleText">Заказы</div>
             <div className="buttonGroup">
-                <IconLabelButton iconName={<Refresh />} onClick={() => {}}>
+                <IconLabelButton iconName={<Refresh />} onClick={() => { }}>
                     Обновить
                 </IconLabelButton>
 
@@ -22,7 +22,7 @@ const OrderToolbar = () => {
                         <div>
                             <div className="button">
                                 <Button className="btnNewOrder" variant="outlined" {...bindToggle(popupState)}>
-                                    <Add /> &nbsp; Новый заказ
+                                    <Add />&nbsp;Новый&#160;заказ
                                 </Button>
                             </div>
                             <Popper {...bindPopper(popupState)} transition>

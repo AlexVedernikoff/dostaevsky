@@ -12,28 +12,37 @@
     .button button {
         height: 32px;
         background: $white;
+
         &:hover {
             background: $white;
         }
     }
 }
+
 .inputSection {
     display: flex;
     flex: 1;
     justify-content: space-between;
+
+    label {
+        min-height: 23px;
+    }
 }
 
 .SelectFilter {
     box-sizing: border-box;
     height: 32px;
     order: 2;
-    &:focus-within + label {
+
+    &:focus-within+label {
         color: $mainTheme;
     }
+
     &:focus-visible {
         outline: none;
     }
-    & > div > div:focus-visible:hover {
+
+    &>div>div:focus-visible:hover {
         outline: none;
     }
 }
@@ -68,7 +77,8 @@ input[type="checkbox"] {
     vertical-align: middle;
     display: flex;
 }
-#checkbox-id:checked + .labelCheckbox:before {
+
+#checkbox-id:checked+.labelCheckbox:before {
     background-color: $mainTheme;
     content: "\f00c";
     border: none;
@@ -78,7 +88,7 @@ input[type="checkbox"] {
     align-items: center;
 }
 
-#checkbox-id:disabled + .labelCheckbox:before {
+#checkbox-id:disabled+.labelCheckbox:before {
     background: $mainTheme;
     color: #aaa;
 }
@@ -113,15 +123,18 @@ input[type="checkbox"] {
     height: 32px;
     width: 140px;
     box-sizing: border-box;
+
     &:focus-visible {
         outline: none;
         border: 1px solid $mainTheme;
         box-shadow: 0px 0px 0px 2px rgba(123, 89, 206, 0.5);
     }
-    &:focus-visible + label {
+
+    &:focus-visible+label {
         color: $mainTheme;
     }
 }
+
 .orderNumberInput {
     order: 2;
     border-radius: 4px;
@@ -129,15 +142,18 @@ input[type="checkbox"] {
     height: 32px;
     width: 130px;
     box-sizing: border-box;
+
     &:focus-visible {
         outline: none;
         border: 1px solid $mainTheme;
         box-shadow: 0px 0px 0px 2px rgba(123, 89, 206, 0.5);
     }
-    &:focus-visible + label {
+
+    &:focus-visible+label {
         color: $mainTheme;
     }
 }
+
 .phoneNumberInput {
     order: 2;
     border-radius: 4px;
@@ -145,12 +161,14 @@ input[type="checkbox"] {
     height: 32px;
     width: 140px;
     box-sizing: border-box;
+
     &:focus-visible {
         outline: none;
         border: 1px solid $mainTheme;
         box-shadow: 0px 0px 0px 2px rgba(123, 89, 206, 0.5);
     }
-    &:focus-visible + label {
+
+    &:focus-visible+label {
         color: $mainTheme;
     }
 }
@@ -186,6 +204,7 @@ form {
         outline: none;
     }
 }
+
 .InputGroup .InputList {
     position: absolute;
     top: 55px;
@@ -198,18 +217,22 @@ form {
     z-index: 1;
     padding: 8px 0;
 }
+
 .InputGroup .InputListItemText {
     font-size: 14px;
     line-height: 16px;
     color: $black;
+
     & span {
         color: $grey-2;
     }
 }
+
 .InputGroup .inputAdress {
     width: 180px;
     height: 32px;
 }
+
 .buttonGroup {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -244,6 +267,7 @@ form {
         }
     }
 }
+
 .inputSectionFilter .InputGroup {
     padding-left: 0;
     padding-top: 16px;
@@ -256,6 +280,7 @@ form {
         border-radius: 4px;
         border: 1px solid $grey-1;
         height: 32px;
+
         &:focus {
             border: 1px solid $mainTheme;
         }
@@ -264,25 +289,31 @@ form {
     .inputOrder {
         box-sizing: border-box;
         width: initial;
+
         &:focus {
             border: 1px solid $mainTheme;
         }
     }
 }
+
 .InputGroup .OrderInputs {
     order: 2;
     display: flex;
     justify-content: space-between;
     position: relative;
-    &:focus-visible + label {
+
+    &:focus-visible+label {
         color: $mainTheme;
     }
+
     .inputOrder {
         width: 128px;
-        &:focus-visible + label {
+
+        &:focus-visible+label {
             color: $mainTheme;
         }
     }
+
     .iconRubleLeft {
         width: 9px;
         height: 20px;
@@ -290,6 +321,7 @@ form {
         left: 35%;
         top: 5px;
     }
+
     .iconRubleRight {
         width: 9px;
         height: 20px;
@@ -297,11 +329,13 @@ form {
         left: 94%;
         top: 5px;
     }
+
     .line {
         position: absolute;
         top: 15px;
         left: 143px;
     }
+
     .iconCalendarLeft {
         width: 15px;
         height: 17px;
@@ -309,6 +343,7 @@ form {
         left: 33%;
         top: 7px;
     }
+
     .iconCalendarRight {
         width: 15px;
         height: 17px;
@@ -318,14 +353,16 @@ form {
     }
 }
 
-#btnReset > button:hover {
+#btnReset>button:hover {
     border: none;
     box-shadow: none;
 }
+
 .buttonGroupReset {
     display: flex;
     margin-top: 22px;
     justify-content: center;
+
     &:last-child {
         padding-right: 12px;
     }
@@ -334,6 +371,7 @@ form {
 .containerIndicator {
     position: relative;
 }
+
 .Indicator {
     width: 8px;
     height: 8px;
@@ -344,11 +382,13 @@ form {
     bottom: 6px;
     left: 5px;
 }
+
 .titleFiltersCounter {
     display: flex;
     align-items: center;
     gap: 15px;
 }
+
 .counterFiltersBox {
     width: 27px;
     height: 20px;

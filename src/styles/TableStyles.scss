@@ -2,7 +2,7 @@
 @use "sass:map";
 
 html .MuiGrid-root {
-    font-family: Circe !important;
+    font-family: Circe, sans-serif !important;
 }
 
 .MuiDataGrid-root {
@@ -19,7 +19,7 @@ html .MuiGrid-root {
         }
 
         .MuiDataGrid-cell {
-            font-family: Circe;
+            font-family: Circe, sans-serif;
             padding: 0;
             margin-right: 10px;
             padding: 0;
