@@ -5,6 +5,9 @@ export const HOST_URL = `https://mir.strio.ru`
 export const API_URL = HOST_URL + `/operator/api`;
 export const SINGNIN_URL = HOST_URL + `/signin`;
 
+
+console.log("API_URL = ", API_URL)
+
 const api = axios.create({
     withCredentials: true,
     baseURL: API_URL,

@@ -1,9 +1,9 @@
 module.exports = {
-  webpack: {
-    configure: { 
-		output:{
-			publicPath: '/operator/'
+	webpack: {
+		configure: {
+			output: {
+				publicPath: '/operator/'
+			}
 		}
 	}
-  }
 };
