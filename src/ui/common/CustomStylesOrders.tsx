@@ -3,6 +3,7 @@ import { StylesConfig } from "react-select";
 export const customStylesOrders: StylesConfig = {
     valueContainer: (provided: Record<string, unknown>, state: any) => ({
         ...provided,
+
         display: "flex",
         height: "32px",
         minHeight: "32px",
@@ -17,8 +18,13 @@ export const customStylesOrders: StylesConfig = {
         maxWidth: "250px",
         maxHeight: "20px"
     }),
+    option: (styles, state) => ({
+        ...styles,
+        cursor: 'pointer',
+    }),
     control: (provided: Record<string, unknown>, state: any) => ({
         ...provided,
+        cursor: 'pointer',
         order: "2",
         height: "32px",
         minHeight: "32px",
