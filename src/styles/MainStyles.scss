@@ -28,6 +28,7 @@ html {
     text-transform: capitalize;
     border: 1px solid $mainTheme;
     font-family: Circe;
+    z-index: 1;
 }
 
 .button.IconButton button {
