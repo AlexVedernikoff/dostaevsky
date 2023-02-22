@@ -58,10 +58,8 @@ const courierNameList: InputValue[] = [
 ];
 
 const typeDeliverList: InputValue[] = [
-    { label: "Авто", value: 1 },
-    { label: "Мото", value: 2 },
-    { label: "Самокат", value: 3 },
-    { label: "Пеший", value: 4 }
+    { label: "Доставка", value: 1 },
+    { label: "Самовывоз", value: 2 }
 ];
 const managerNameList: InputValue[] = [
     { label: "2 СПБ Иванов Иван Иванович", value: 1 },
