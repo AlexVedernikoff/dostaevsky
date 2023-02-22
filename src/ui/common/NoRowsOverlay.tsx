@@ -40,11 +40,7 @@ export function NoRowsOverlay() {
                 Измените или сбросьте примененные фильтры
             </p>
             <div className="button">
-                <Button onClick={() => {
-                    console.log("Вы сбросили фильтры до значений по умолчанию")
-                    // dispatch(resetState());
-                    resetFilters();
-                }} variant="outlined">Сбросить фильтры</Button>
+                <Button onClick={() => resetFilters()} variant="outlined">Сбросить фильтры</Button>
             </div>
         </Stack>
     );
