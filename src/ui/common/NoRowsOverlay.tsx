@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Stack from "@mui/material/Stack";
 import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "hooks/use-redux";
 import { Button } from "@mui/material";
 import { ReactComponent as Magnifier } from "../../../src/svg/magnifier.svg";
 import { ReactComponent as CrossMagnifier } from "../../svg/crossMagnifier.svg";
 import { resetState } from "../../store/mainState";
+import { fetchFilteredOrders } from "../../store/tableState";
 
 export function NoRowsOverlay() {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
-    console.log("resetState = ", resetState)
+    const filteredOrders = useCallback(() => {
+        dispatch(fetchFilteredOrders());
+    }, [dispatch]);
+
+    function resetFilters() {
+        dispatch(resetState());
+        filteredOrders();
+    }
+
     return (
         <Stack height="100%" alignItems="center" justifyContent="center">
             <div className="IconSearch">
@@ -31,7 +42,8 @@ export function NoRowsOverlay() {
             <div className="button">
                 <Button onClick={() => {
                     console.log("Вы сбросили фильтры до значений по умолчанию")
-                    dispatch(resetState());
+                    // dispatch(resetState());
+                    resetFilters();
                 }} variant="outlined">Сбросить фильтры</Button>
             </div>
         </Stack>
