@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import Stack from "@mui/material/Stack";
-import { useDispatch, useSelector } from "react-redux";
 import { useAppDispatch, useAppSelector } from "hooks/use-redux";
 import { Button } from "@mui/material";
 import { ReactComponent as Magnifier } from "../../../src/svg/magnifier.svg";
@@ -9,7 +8,6 @@ import { resetState } from "../../store/mainState";
 import { fetchFilteredOrders } from "../../store/tableState";
 
 export function NoRowsOverlay() {
-    // const dispatch = useDispatch();
     const dispatch = useAppDispatch();
 
     const filteredOrders = useCallback(() => {

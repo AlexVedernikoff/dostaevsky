@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "hooks/use-redux";
-// import { closeStateModal, changeInput, changeSelect, resetState } from "../store/mainState";
-//import { resetState } from "../store/mainState";
 import { closeStateModal, changeInput, changeSelect, resetModalState } from "../store/modalState";
 
 import { changeMainState } from "../store/mainState";
@@ -28,7 +26,6 @@ import { fetchFilteredOrders } from "store/tableState";
 
 function Modals() {
     const dispatch = useAppDispatch();
-    // const stateModal = useAppSelector((state) => state.mainFilters);
     const stateModal = useAppSelector((state) => state.modal);
     console.log("stateModal = ", stateModal)
 
@@ -37,7 +34,6 @@ function Modals() {
     }, [dispatch]);
 
     function resetFilters() {
-        // dispatch(resetState());
         dispatch(resetModalState());
         filteredOrders();
     }

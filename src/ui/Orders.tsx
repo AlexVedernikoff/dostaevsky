@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from "uuid";
 
 import { useAppDispatch, useAppSelector } from "hooks/use-redux";
 import useDebounce from "hooks/use-debounce";
-//import { changeInput, changeSelect, resetState, openStateModal } from "../store/mainState";
 import { changeInput, changeSelect, resetState } from "../store/mainState";
 import { openStateModal } from "../store/modalState";
 
