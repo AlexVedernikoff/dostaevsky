@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// export const HOST_URL = `https://online.staging.dostaevsky.ru`
-export const HOST_URL = `https://mir.strio.ru`
+export const HOST_URL = `https://online.staging.dostaevsky.ru`
+//export const HOST_URL = `https://mir.strio.ru`
 export const API_URL = HOST_URL + `/operator/api`;
 export const SINGNIN_URL = HOST_URL + `/signin`;
 
