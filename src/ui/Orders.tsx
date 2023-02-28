@@ -22,13 +22,18 @@ import { List, ListItemButton, ListItemText } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
 function Orders() {
+    console.log("рендер компонента Orders")
     let initialValues: InputValueDispatch;
 
     const [valueFilter, setValueFilter] = useState(initialValues);
     const [clientPhone, setClientPhone] = useState("");
+
     const [clientPhoneFetch, setClientPhoneFetch] = useState("");
+
     const dispatch = useAppDispatch();
     const state = useAppSelector((state) => state.mainFilters.filters);
+    // const [clientPhone, setClientPhone] = useState(state.number_telephone);
+
     const dataFilters = useAppSelector((state) => state.dataFilters);
 
     const debouncedValueFilter = useDebounce(valueFilter, 1000);
@@ -39,6 +44,18 @@ function Orders() {
             dispatch(fetchDataFilters());
         }
     }, []);
+
+    const [focusedInput, setFocusedInput] = useState("orderNumber");
+
+    useEffect(() => {
+        const input = document.getElementById(focusedInput);
+        input.focus();
+    });
+
+    useEffect(() => {
+        console.log("Вы вызвали setClientPhone(state.number_telephone)")
+        setClientPhone(state.number_telephone)
+    }, [state.number_telephone]);
 
     const cityList = [];
     const productionList = [];
@@ -93,6 +110,8 @@ function Orders() {
         if (e.target.value.length === 0) {
             setValueFilter({ value: value, property: "number_telephone" });
         }
+
+        // setFocusedInput("phoneNumber");
     };
 
     const handlerPhoneClick = (phone) => {
@@ -115,7 +134,11 @@ function Orders() {
                         <input
                             defaultValue={getDefaultValue(state.number_order)}
                             key={state.number_order}
-                            onChange={(e) => setValueFilter({ value: e.target.value, property: "number_order" })}
+                            onChange={(e) => {
+                                setValueFilter({ value: e.target.value, property: "number_order" })
+                                // setFocusedInput("orderNumber")
+                            }}
+                            onClick={() => setFocusedInput("orderNumber")}
                             className="orderNumberInput"
                             id="orderNumber"
                             type="text"
@@ -126,7 +149,10 @@ function Orders() {
                     </div>
                     <form className="form">
                         <div className="InputGroup">
-                            <input key={state.number_telephone} onChange={handlerPhoneInput} value={clientPhone} className="phoneNumberInput" id="phoneNumber" type="text" />
+                            <input key={state.number_telephone}
+                                onChange={handlerPhoneInput} value={clientPhone} className="phoneNumberInput" id="phoneNumber" type="text"
+                                onClick={() => setFocusedInput("phoneNumber")}
+                            />
                             {dataFilters.openClientPhone && (
                                 <List className="InputList">
                                     {dataFilters.clientPhone.map((phone) => {
@@ -186,6 +212,7 @@ function Orders() {
                             defaultValue={getDefaultValue(state.address)}
                             key={state.address}
                             onChange={(e) => setValueFilter({ value: e.target.value, property: "address" })}
+                            onClick={() => setFocusedInput("address")}
                             className="inputOrder inputAdress"
                             id="address"
                             type="text"

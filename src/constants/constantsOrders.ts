@@ -13,7 +13,8 @@ export const style = {
 };
 export const defaultFieldsSelect: Filters = {
     status_order: [{ label: "Принят", value: "accepted" }],
-    manufacture: [{ label: "Офис", value: 9 }]
+    // manufacture: [{ label: "Офис", value: 9 }]
+    manufacture: [{ label: "Офис", value: 1 }]
 };
 
 export const defaultFilterableFields: FilterParams = {

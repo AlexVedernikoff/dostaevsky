@@ -31,6 +31,7 @@ const tableSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchFilteredOrders.pending, (state) => {
+                console.log("Запрос на сервер получение информации о заказах с учётом фильтров")
                 state.isLoading = true;
             })
             .addCase(fetchFilteredOrders.fulfilled, (state, action) => {

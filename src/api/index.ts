@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const HOST_URL = `https://online.staging.dostaevsky.ru`
-//export const HOST_URL = `https://mir.strio.ru`
+// export const HOST_URL = `https://online.staging.dostaevsky.ru`
+export const HOST_URL = `https://mir.strio.ru`
 export const API_URL = HOST_URL + `/operator/api`;
 export const SINGNIN_URL = HOST_URL + `/signin`;
 
@@ -16,6 +16,8 @@ const api = axios.create({
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+        // "Access-Control-Request-Origin": "*",
+        // "Access-Control-Request-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
     }
 });
 
@@ -44,7 +46,7 @@ api.interceptors.response.use(
 
                 return api.request(originalRequest);
             } catch (e) {
-                // console.log("пользователь не авторизирован")
+                console.log("пользователь не авторизирован")
 
                 window.location.href = SINGNIN_URL;
             }

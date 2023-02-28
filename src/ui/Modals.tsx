@@ -27,7 +27,7 @@ import { fetchFilteredOrders } from "store/tableState";
 function Modals() {
     const dispatch = useAppDispatch();
     const stateModal = useAppSelector((state) => state.modal);
-    console.log("stateModal = ", stateModal)
+    // console.log("stateModal = ", stateModal)
 
     const filteredOrders = useCallback(() => {
         dispatch(fetchFilteredOrders());
@@ -42,6 +42,19 @@ function Modals() {
         dispatch(changeMainState({ value: stateModal.filters }));
         dispatch(closeStateModal());
         filteredOrders();
+    }
+
+    const [focusedInput, setFocusedInput] = useState("orderNumber");
+
+    useEffect(() => {
+        const input = document.getElementById(focusedInput);
+        if (input) {
+            input.focus();
+        }
+    });
+
+    const setFocusInputOnClick = (e) => {
+        setFocusedInput(e.target.id)
     }
 
     const dataFilters = useAppSelector((state) => state.dataFilters);
@@ -108,8 +121,9 @@ function Modals() {
                                     key={stateModal.filters.number_order}
                                     defaultValue={stateModal.filters.number_order}
                                     onChange={(e) => setValueFilter({ value: e.target.value, property: "number_order" })}
+                                    onClick={() => setFocusedInput("orderNumberModal")}
                                     className="inputFilter inputOrder"
-                                    id="orderNumber"
+                                    id="orderNumberModal"
                                     type="text"
                                 />
                                 <label htmlFor="orderNumber">№ заказа</label>
@@ -119,8 +133,9 @@ function Modals() {
                                     key={stateModal.filters.number_telephone}
                                     defaultValue={stateModal.filters.number_telephone}
                                     onChange={(e) => setValueFilter({ value: e.target.value, property: "number_telephone" })}
+                                    onClick={() => setFocusedInput("phoneNumberModal")}
                                     className="inputFilter inputOrder"
-                                    id="phoneNumber"
+                                    id="phoneNumberModal"
                                     type="text"
                                 />
                                 <label htmlFor="phoneNumber">Телефон клиента</label>
@@ -156,8 +171,9 @@ function Modals() {
                                     key={stateModal.filters.address}
                                     defaultValue={stateModal.filters.address}
                                     onChange={(e) => setValueFilter({ value: e.target.value, property: "address" })}
+                                    onClick={() => setFocusedInput("addressModal")}
                                     className="inputOrder inputAdress"
-                                    id="address"
+                                    id="addressModal"
                                     type="text"
                                 />
                                 <label htmlFor="address">Адрес</label>
@@ -195,7 +211,11 @@ function Modals() {
                                         defaultValue={getDefaultValue(stateModal.filters.fromAmount)}
                                         onChange={(e) => setValueFilter({ value: e.target.value, property: "fromAmount" })}
                                         className="inputOrder"
-                                        id="price"
+                                        onClick={(e) => {
+                                            console.log("Вы кликнули на элемент", e)
+                                            setFocusInputOnClick(e)
+                                        }}
+                                        id="priceFrom"
                                     />
                                     <Ruble className="iconRubleLeft" />
                                     <Line className="line" />
@@ -203,6 +223,11 @@ function Modals() {
                                         key={stateModal.filters.toAmount}
                                         defaultValue={getDefaultValue(stateModal.filters.toAmount)}
                                         onChange={(e) => setValueFilter({ value: e.target.value, property: "toAmount" })}
+                                        onClick={(e) => {
+                                            console.log("Вы кликнули на элемент", e)
+                                            setFocusInputOnClick(e)
+                                        }}
+                                        id="priceTo"
                                         className="inputOrder"
                                         name="toAmount"
                                     />
@@ -322,8 +347,10 @@ function Modals() {
                                     key={stateModal.filters.recipientPhone}
                                     defaultValue={getDefaultValue(stateModal.filters.recipientPhone)}
                                     onChange={(e) => setValueFilter({ value: e.target.value, property: "recipientPhone" })}
+                                    onClick={(e) => setFocusInputOnClick(e)}
                                     className="inputFilter inputOrder"
-                                    id="phoneNumber"
+                                    // id="phoneNumber"
+                                    id="phoneNumberModalRecepient"
                                     type="text"
                                 />
                                 <label htmlFor="recipientPhone">Телефон получателя</label>
