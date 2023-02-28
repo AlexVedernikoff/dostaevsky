@@ -121,7 +121,7 @@ function Modals() {
                                     key={stateModal.filters.number_order}
                                     defaultValue={stateModal.filters.number_order}
                                     onChange={(e) => setValueFilter({ value: e.target.value, property: "number_order" })}
-                                    onClick={() => setFocusedInput("orderNumberModal")}
+                                    onClick={(e) => setFocusInputOnClick(e)}
                                     className="inputFilter inputOrder"
                                     id="orderNumberModal"
                                     type="text"
@@ -133,7 +133,8 @@ function Modals() {
                                     key={stateModal.filters.number_telephone}
                                     defaultValue={stateModal.filters.number_telephone}
                                     onChange={(e) => setValueFilter({ value: e.target.value, property: "number_telephone" })}
-                                    onClick={() => setFocusedInput("phoneNumberModal")}
+                                    // onClick={() => setFocusedInput("phoneNumberModal")}
+                                    onClick={(e) => setFocusInputOnClick(e)}
                                     className="inputFilter inputOrder"
                                     id="phoneNumberModal"
                                     type="text"
@@ -171,7 +172,8 @@ function Modals() {
                                     key={stateModal.filters.address}
                                     defaultValue={stateModal.filters.address}
                                     onChange={(e) => setValueFilter({ value: e.target.value, property: "address" })}
-                                    onClick={() => setFocusedInput("addressModal")}
+                                    // onClick={() => setFocusedInput("addressModal")}
+                                    onClick={(e) => setFocusInputOnClick(e)}
                                     className="inputOrder inputAdress"
                                     id="addressModal"
                                     type="text"

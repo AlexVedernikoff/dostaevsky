@@ -32,7 +32,6 @@ function Orders() {
 
     const dispatch = useAppDispatch();
     const state = useAppSelector((state) => state.mainFilters.filters);
-    // const [clientPhone, setClientPhone] = useState(state.number_telephone);
 
     const dataFilters = useAppSelector((state) => state.dataFilters);
 
@@ -52,10 +51,18 @@ function Orders() {
         input.focus();
     });
 
+    // useEffect(() => {
+    //     console.log("Вы вызвали setClientPhone(state.number_telephone)")
+    //     setClientPhone(state.number_telephone)
+    // }, [state.number_telephone]);
+
     useEffect(() => {
         console.log("Вы вызвали setClientPhone(state.number_telephone)")
-        setClientPhone(state.number_telephone)
-    }, [state.number_telephone]);
+        state.number_telephone ?
+            setClientPhone(state.number_telephone) :
+            setClientPhone("")
+    }, [state]);
+
 
     const cityList = [];
     const productionList = [];
@@ -111,7 +118,6 @@ function Orders() {
             setValueFilter({ value: value, property: "number_telephone" });
         }
 
-        // setFocusedInput("phoneNumber");
     };
 
     const handlerPhoneClick = (phone) => {
@@ -136,7 +142,6 @@ function Orders() {
                             key={state.number_order}
                             onChange={(e) => {
                                 setValueFilter({ value: e.target.value, property: "number_order" })
-                                // setFocusedInput("orderNumber")
                             }}
                             onClick={() => setFocusedInput("orderNumber")}
                             className="orderNumberInput"
