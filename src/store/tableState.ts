@@ -18,6 +18,7 @@ export const fetchFilteredOrders = createAsyncThunk<Content, undefined, { reject
     "table/fetchFilteredOrders",
     async (_, { rejectWithValue, getState }) => {
         const params = getState();
+        console.log("params fetchFilteredOrders = ", params)
 
         const { data } = await OrdersDataService.getFiltered(params.mainFilters.FilterableFields);
         return data;
@@ -35,11 +36,13 @@ const tableSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(fetchFilteredOrders.fulfilled, (state, action) => {
+                console.log("Запрос на сервер выполнен успешно")
                 state.orders = action.payload.orders;
                 state.summary = action.payload.summary;
                 state.isLoading = false;
             })
             .addCase(fetchFilteredOrders.rejected, (state) => {
+                console.log("Запрос на сервер отклонён с ошибкой!")
                 state.isLoading = false;
             });
     }
