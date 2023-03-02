@@ -18,9 +18,20 @@ export const fetchFilteredOrders = createAsyncThunk<Content, undefined, { reject
     "table/fetchFilteredOrders",
     async (_, { rejectWithValue, getState }) => {
         const params = getState();
-        console.log("params fetchFilteredOrders = ", params)
+        const notEmptyParams = {}
 
-        const { data } = await OrdersDataService.getFiltered(params.mainFilters.FilterableFields);
+        for (let key in params.mainFilters.FilterableFields) {
+            // console.log(key, " = ", params.mainFilters.FilterableFields[key])
+
+            if (params.mainFilters.FilterableFields[key]) {
+                notEmptyParams[key] = params.mainFilters.FilterableFields[key]
+            }
+        }
+        // console.log("params fetchFilteredOrders = ", params.mainFilters.FilterableFields)
+        // console.log("params notEmptyParams = ", notEmptyParams)
+
+        // const { data } = await OrdersDataService.getFiltered(params.mainFilters.FilterableFields);
+        const { data } = await OrdersDataService.getFiltered(notEmptyParams);
         return data;
     }
 );
@@ -32,7 +43,7 @@ const tableSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchFilteredOrders.pending, (state) => {
-                console.log("Запрос на сервер получение информации о заказах с учётом фильтров")
+                console.log("Запрос 1 на сервер получение информации о заказах с учётом фильтров")
                 state.isLoading = true;
             })
             .addCase(fetchFilteredOrders.fulfilled, (state, action) => {

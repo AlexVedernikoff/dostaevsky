@@ -40,7 +40,7 @@ function Orders() {
 
     useEffect(() => {
         if (!dataFilters.isReceived && !dataFilters.isLoading) {
-            dispatch(fetchDataFilters());
+            // dispatch(fetchDataFilters());
         }
     }, []);
 

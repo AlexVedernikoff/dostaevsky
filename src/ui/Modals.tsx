@@ -35,7 +35,7 @@ function Modals() {
 
     function resetFilters() {
         dispatch(resetModalState());
-        filteredOrders();
+        // filteredOrders(); --> фиксим баг №21
     }
 
     function applyFilters() {
