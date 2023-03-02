@@ -22,9 +22,14 @@ const productionList: InputValue[] = [
     { label: "Дом", value: 2 }
 ];
 
-const brandList: InputValue[] = [
-    { label: "Пироги домой", value: 1 },
-    { label: "Достаевский", value: 2 }
+// const brandList: InputValue[] = [
+//     { label: "Пироги домой", value: 1 },
+//     { label: "Достаевский", value: 2 }
+// ];
+
+const brandList: InputValueString[] = [
+    { label: "Пироги домой", value: "dostaevsky" },
+    { label: "Достаевский", value: "pirogidomoy" }
 ];
 
 const paymentTypeList: InputValueString[] = [
