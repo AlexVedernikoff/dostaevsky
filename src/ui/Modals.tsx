@@ -28,6 +28,7 @@ function Modals() {
     const dispatch = useAppDispatch();
     const stateModal = useAppSelector((state) => state.modal);
     // console.log("stateModal = ", stateModal)
+    console.log("Рендеринг компонента Modals")
 
     const filteredOrders = useCallback(() => {
         dispatch(fetchFilteredOrders());

@@ -22,7 +22,7 @@ const productionList: InputValue[] = [
     { label: "Дом", value: 2 }
 ];
 
-// const brandList: InputValue[] = [
+// const brandList: InputValue[] = [         --> фиксим баг 24
 //     { label: "Пироги домой", value: 1 },
 //     { label: "Достаевский", value: 2 }
 // ];
@@ -72,10 +72,16 @@ const managerNameList: InputValue[] = [
     { label: "Иванов Иван Иванович", value: 3 }
 ];
 
-const clientFeedbackList: InputValue[] = [
-    { label: "Положительный", value: 1 },
-    { label: "Отрицательный", value: 2 }
+// const clientFeedbackList: InputValue[] = [   --> фиксим баг 28
+//     { label: "Положительный", value: 1 },
+//     { label: "Отрицательный", value: 2 }
+// ];
+
+const clientFeedbackList: InputValueString[] = [
+    { label: "Положительный", value: "positive" },
+    { label: "Отрицательный", value: "negative" }
 ];
+
 const claimTypeList: InputValue[] = [
     { label: "Нет вины компании", value: 1 },
     { label: "Ошибка при оформлении заказа", value: 2 },
