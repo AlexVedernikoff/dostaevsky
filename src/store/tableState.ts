@@ -21,16 +21,12 @@ export const fetchFilteredOrders = createAsyncThunk<Content, undefined, { reject
         const notEmptyParams = {}
 
         for (let key in params.mainFilters.FilterableFields) {
-            // console.log(key, " = ", params.mainFilters.FilterableFields[key])
 
             if (params.mainFilters.FilterableFields[key]) {
                 notEmptyParams[key] = params.mainFilters.FilterableFields[key]
             }
         }
-        // console.log("params fetchFilteredOrders = ", params.mainFilters.FilterableFields)
-        // console.log("params notEmptyParams = ", notEmptyParams)
 
-        // const { data } = await OrdersDataService.getFiltered(params.mainFilters.FilterableFields);
         const { data } = await OrdersDataService.getFiltered(notEmptyParams);
         return data;
     }

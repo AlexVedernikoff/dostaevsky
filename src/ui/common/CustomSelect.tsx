@@ -9,7 +9,26 @@ import { data } from "../../data/dataOrder";
 export const CustomSelect = memo((props: any) => {
     const dispatch = useAppDispatch();
     const options = props.multi ? (props.options.length !== props.defaultValue.length ? [data.typeSelect.ALL, ...props.options] : [data.typeSelect.RESET, ...props.options]) : props.options;
-    const [selectedV, setSelected] = useState([]);
+    const [selectedOptions, setSelected] = useState([]);
+    function dispatchChanges(selected) {
+        if (!props.modal) {
+            if (Array.isArray(selected)) {
+                props.multi && selected.length && selected.find((option) => option.value === 0)
+                    ? props.changeState({ value: options.slice(1), property: props.property })
+                    : selected.find((option) => option.value === -1)
+                        ? props.changeState({ value: [], property: props.property })
+                        : props.changeState({ value: selected, property: props.property });
+            }
+        }
+        if (Array.isArray(selected)) {
+            props.multi && selected.length && selected.find((option) => option.value === 0)
+                ? dispatch(props.changeState({ value: options.slice(1), property: props.property }))
+                : selected.find((option) => option.value === -1)
+                    ? dispatch(props.changeState({ value: [], property: props.property }))
+                    : dispatch(props.changeState({ value: selected, property: props.property }));
+        }
+
+    }
     return (
         <Select
             options={options}
@@ -30,53 +49,64 @@ export const CustomSelect = memo((props: any) => {
             onMenuClose={() => {
                 console.log("Сработало событие onMenuClose")
                 console.log("props = ", props)
-                console.log("selectedV = ", selectedV)
-                const selected = selectedV;
+                console.log("selectedV = ", selectedOptions)
+                const selected = selectedOptions
+                if (selected.find((option) => option.value !== 0 && option.value !== -1)) {
+                    dispatchChanges(selected)
 
+                    //**** */
+                    // if (!props.modal) {
+                    //     if (Array.isArray(selected)) {
+                    //         props.multi && selected.length && selected.find((option) => option.value === 0)
+                    //             ? props.changeState({ value: options.slice(1), property: props.property })
+                    //             : selected.find((option) => option.value === -1)
+                    //                 ? props.changeState({ value: [], property: props.property })
+                    //                 : props.changeState({ value: selected, property: props.property });
+                    //     }
+                    // }
+                    // if (Array.isArray(selected)) {
+                    //     props.multi && selected.length && selected.find((option) => option.value === 0)
+                    //         ? dispatch(props.changeState({ value: options.slice(1), property: props.property }))
+                    //         : selected.find((option) => option.value === -1)
+                    //             ? dispatch(props.changeState({ value: [], property: props.property }))
+                    //             : dispatch(props.changeState({ value: selected, property: props.property }));
+                    // }
+                    //**** */
 
-                if (!props.modal) {
-                    if (Array.isArray(selected)) {
-                        props.multi && selected.length && selected.find((option) => option.value === 0)
-                            ? props.changeState({ value: options.slice(1), property: props.property })
-                            : selected.find((option) => option.value === -1)
-                                ? props.changeState({ value: [], property: props.property })
-                                : props.changeState({ value: selected, property: props.property });
-                    }
                 }
-                if (Array.isArray(selected)) {
-                    props.multi && selected.length && selected.find((option) => option.value === 0)
-                        ? dispatch(props.changeState({ value: options.slice(1), property: props.property }))
-                        : selected.find((option) => option.value === -1)
-                            ? dispatch(props.changeState({ value: [], property: props.property }))
-                            : dispatch(props.changeState({ value: selected, property: props.property }));
-                }
-
-
             }
             }
             onChange={(selected) => {
-                // onMenuClose={(selected) => {
+
                 console.log("selected = ", selected)
                 setSelected(selected);
                 console.log("Сработало событие onChange")
 
+                if (selected.find((option) => option.value === 0 || option.value === -1)) {
+                    console.log("Мы здесь!! onChange")
 
-                // if (!props.modal) {
-                //     if (Array.isArray(selected)) {
-                //         props.multi && selected.length && selected.find((option) => option.value === 0)
-                //             ? props.changeState({ value: options.slice(1), property: props.property })
-                //             : selected.find((option) => option.value === -1)
-                //                 ? props.changeState({ value: [], property: props.property })
-                //                 : props.changeState({ value: selected, property: props.property });
-                //     }
-                // }
-                // if (Array.isArray(selected)) {
-                //     props.multi && selected.length && selected.find((option) => option.value === 0)
-                //         ? dispatch(props.changeState({ value: options.slice(1), property: props.property }))
-                //         : selected.find((option) => option.value === -1)
-                //             ? dispatch(props.changeState({ value: [], property: props.property }))
-                //             : dispatch(props.changeState({ value: selected, property: props.property }));
-                // }
+                    dispatchChanges(selected)
+                    //***** */
+                    // if (!props.modal) {
+                    //     if (Array.isArray(selected)) {
+                    //         props.multi && selected.length && selected.find((option) => option.value === 0)
+                    //             ? props.changeState({ value: options.slice(1), property: props.property })
+                    //             : selected.find((option) => option.value === -1)
+                    //                 ? props.changeState({ value: [], property: props.property })
+                    //                 : props.changeState({ value: selected, property: props.property });
+                    //     }
+                    // }
+                    // if (Array.isArray(selected)) {
+                    //     props.multi && selected.length && selected.find((option) => option.value === 0)
+                    //         ? dispatch(props.changeState({ value: options.slice(1), property: props.property }))
+                    //         : selected.find((option) => option.value === -1)
+                    //             ? dispatch(props.changeState({ value: [], property: props.property }))
+                    //             : dispatch(props.changeState({ value: selected, property: props.property }));
+                    // }
+                    //***** */
+
+                }
+
             }}
         />
     );

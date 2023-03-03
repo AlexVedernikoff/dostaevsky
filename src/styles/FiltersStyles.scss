@@ -181,6 +181,10 @@ form {
     display: grid;
 }
 
+.InputGroupMain {
+    z-index: 2;
+}
+
 .InputGroup {
     display: flex;
     flex-direction: column;
@@ -190,6 +194,7 @@ form {
     width: auto;
     height: auto;
     position: relative;
+
 
     &:first-child {
         padding-left: 12px;
@@ -216,6 +221,7 @@ form {
     border-radius: 4px;
     z-index: 1;
     padding: 8px 0;
+    z-index: 2;
 }
 
 .InputGroup .InputListItemText {

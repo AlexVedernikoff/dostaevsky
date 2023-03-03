@@ -182,7 +182,7 @@ function Orders() {
                             </label>
                         </div>
                     </form>
-                    <div className="InputGroup">
+                    <div className="InputGroup InputGroupMain">
                         <CustomSelect
                             modal={false}
                             multi={true}
@@ -197,7 +197,7 @@ function Orders() {
                             Статус заказа
                         </label>
                     </div>
-                    <div className="InputGroup">
+                    <div className="InputGroup InputGroupMain">
                         <CustomSelect
                             modal={false}
                             multi={true}
@@ -226,7 +226,7 @@ function Orders() {
                             Адрес
                         </label>
                     </div>
-                    <div className="InputGroup">
+                    <div className="InputGroup InputGroupMain">
                         <CustomSelect
                             modal={false}
                             multi={true}
