@@ -22,7 +22,7 @@ import { List, ListItemButton, ListItemText } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
 function Orders() {
-    console.log("рендер компонента Orders")
+    // console.log("рендер компонента Orders")
     let initialValues: InputValueDispatch;
 
     const [valueFilter, setValueFilter] = useState(initialValues);
@@ -51,13 +51,8 @@ function Orders() {
         input.focus();
     });
 
-    // useEffect(() => {
-    //     console.log("Вы вызвали setClientPhone(state.number_telephone)")
-    //     setClientPhone(state.number_telephone)
-    // }, [state.number_telephone]);
-
     useEffect(() => {
-        console.log("Вы вызвали setClientPhone(state.number_telephone)")
+        // console.log("Вы вызвали setClientPhone(state.number_telephone)")
         state.number_telephone ?
             setClientPhone(state.number_telephone) :
             setClientPhone("")

@@ -28,7 +28,7 @@ function Modals() {
     const dispatch = useAppDispatch();
     const stateModal = useAppSelector((state) => state.modal);
     // console.log("stateModal = ", stateModal)
-    console.log("Рендеринг компонента Modals")
+    // console.log("Рендеринг компонента Modals")
 
     const filteredOrders = useCallback(() => {
         dispatch(fetchFilteredOrders());
@@ -134,7 +134,6 @@ function Modals() {
                                     key={stateModal.filters.number_telephone}
                                     defaultValue={stateModal.filters.number_telephone}
                                     onChange={(e) => setValueFilter({ value: e.target.value, property: "number_telephone" })}
-                                    // onClick={() => setFocusedInput("phoneNumberModal")}
                                     onClick={(e) => setFocusInputOnClick(e)}
                                     className="inputFilter inputOrder"
                                     id="phoneNumberModal"

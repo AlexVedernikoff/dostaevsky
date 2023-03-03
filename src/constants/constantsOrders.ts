@@ -12,12 +12,12 @@ export const style = {
     boxSizing: " border-box"
 };
 export const defaultFieldsSelect: Filters = {
-    status_order: [{ label: "Принят", value: "accepted" }],
+    // status_order: [{ label: "Принят", value: "accepted" }],
     manufacture: [{ label: "Офис", value: 9 }]
 };
 
 export const defaultFilterableFields: FilterParams = {
-    status: defaultFieldsSelect.status_order[0].value,
+    // status: defaultFieldsSelect.status_order[0].value,
     manufactory_id: defaultFieldsSelect.manufacture[0].value
 };
 
