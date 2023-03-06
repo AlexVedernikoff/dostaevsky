@@ -82,7 +82,6 @@ function TableOrders() {
 
 
     let orders = table.orders.map(order => {
-        console.log(order.total_price.toLocaleString('ru'))
         return {
             ...order,
             client_phone: "+" + order.client_phone,
