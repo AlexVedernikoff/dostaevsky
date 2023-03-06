@@ -141,6 +141,7 @@ function TableOrders() {
                             Pagination: Footer,
                             NoRowsOverlay
                         }}
+                        hideFooterSelectedRowCount={true}
                     />
                 </div>
             </Box>
