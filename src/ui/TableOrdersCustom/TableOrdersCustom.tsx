@@ -76,16 +76,28 @@ const columns: GridColDef[] = [
 
 function TableOrders() {
     const table = useAppSelector((state) => state.table);
+    console.log(" table = ", table)
     const dataFilters = useAppSelector((state) => state.dataFilters);
     const dispatch = useAppDispatch();
 
-    let orders = table.orders;
+
+    let orders = table.orders.map(order => {
+        console.log(order.total_price.toLocaleString('ru'))
+        return {
+            ...order,
+            client_phone: "+" + order.client_phone,
+            total_price: order.total_price.toLocaleString('ru')
+        };
+    })
+
 
     if (dataFilters.isReceived) {
         orders = orders.map((order) => {
+            console.log("order = ", order)
             const dataCity = dataFilters.data.cities.find((city) => city.id === order.city_id);
             return {
                 ...order,
+                // client_phone: "+" + client_phone,
                 city_name: dataCity.name
             };
         });

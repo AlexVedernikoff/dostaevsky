@@ -12,12 +12,15 @@ export const style = {
     boxSizing: " border-box"
 };
 export const defaultFieldsSelect: Filters = {
-    // status_order: [{ label: "Принят", value: "accepted" }],
+
+    status_order: [{ label: "На кухне", value: "on_kitchen" }],
     manufacture: [{ label: "Офис", value: 9 }]
+
+
 };
 
 export const defaultFilterableFields: FilterParams = {
-    // status: defaultFieldsSelect.status_order[0].value,
+    status: defaultFieldsSelect.status_order[0].value,
     manufactory_id: defaultFieldsSelect.manufacture[0].value
 };
 
@@ -39,5 +42,9 @@ export const FilteredFieldsInDB = {
     managerName: "manager_id",
     clientFeedback: "client_feedback",
     claimType: "complaint_type",
-    product: "product_id"
+    product: "product_id",
+    calendarDeliverFrom: "calendarDeliverFrom",
+    calendarDeliverTo: "calendarDeliverTo",
+    calendarCreateFrom: "calendarCreateFrom",
+    calendarCreateTo: "calendarCreateTo"
 };

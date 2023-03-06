@@ -33,7 +33,7 @@ export const InputOption: any = ({ getStyles, Icon, isDisabled, isFocused, isSel
             {props.id[props.id.length - 1] !== "0" ? (
                 <>
                     <label className="label rowCheckbox">
-                        <input id="checkbox-id" type="checkbox" checked={isSelected} />
+                        <input id="checkbox-id" type="checkbox" checked={isSelected} onChange={() => { }} />
                         <label className="label labelCheckbox" htmlFor="checkbox-id"></label>
                     </label>
                     {children}

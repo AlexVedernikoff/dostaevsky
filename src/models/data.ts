@@ -1,3 +1,5 @@
+import { StringifyOptions } from "querystring";
+
 export interface Data {
     id: number;
     status: string;
@@ -17,6 +19,10 @@ export interface Data {
     client_feedback: string;
     manufactory_id: number;
     manager_name: string;
+    calendarDeliverFrom?: string;
+    calendarDeliverTo?: string;
+    calendarCreateFrom?: string;
+    calendarCreateTo?: string;
 }
 
 export interface IPaymantTypes {

@@ -58,17 +58,20 @@ export const CustomSelect = (props: any) => {
                 // console.log("selectedOptions = ", selectedOptions)
                 const selected = selectedOptions
                 if (!selected.find((option) => option.value === 0 || option.value === -1)) {
-                    // console.log("Мы здесь!! onMenuClose")
-                    // dispatchChanges(selected)
+                    //console.log("Мы здесь!! onMenuClose")
+                    //dispatchChanges(selected)
                     debouncedDispatchChange(selected)
                 }
             }
             }
             onChange={(selected) => {
 
-                // console.log("selected = ", selected)
+                console.log("selected = ", selected)
+                for (let el of selected) {
+                    console.log(el);
+                }
                 setSelected(selected);
-                // console.log("Сработало событие onChange")
+                console.log("Сработало событие onChange")
 
                 if (selected.find((option) => option.value === 0 || option.value === -1)) {
                     // console.log("Мы здесь!! onChange")

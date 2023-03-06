@@ -372,10 +372,18 @@ function Modals() {
                             </div>
                             <div className="InputGroup">
                                 <div className="OrderInputs">
-                                    <input className="inputOrder " id="calendarCreate" />
+                                    <input
+                                        className="inputOrder "
+                                        id="calendarCreateFrom"
+                                        onChange={(e) => setValueFilter({ value: e.target.value, property: "calendarCreateFrom" })}
+                                        onClick={(e) => setFocusInputOnClick(e)} />
                                     <Calendar className="iconCalendarLeft" />
                                     <Line className="line" />
-                                    <input className="inputOrder" />
+                                    <input
+                                        className="inputOrder "
+                                        id="calendarCreateTo"
+                                        onChange={(e) => setValueFilter({ value: e.target.value, property: "calendarCreateTo" })}
+                                        onClick={(e) => setFocusInputOnClick(e)} />
                                     <Calendar className="iconCalendarRight" />
                                 </div>
                                 <label className="label" htmlFor="calendarCreate">
@@ -384,10 +392,19 @@ function Modals() {
                             </div>
                             <div className="InputGroup">
                                 <div className="OrderInputs">
-                                    <input className="inputOrder " id="calendarDeliver" />
+                                    <input
+                                        className="inputOrder "
+                                        id="calendarDeliverFrom"
+                                        onChange={(e) => setValueFilter({ value: e.target.value, property: "calendarDeliverFrom" })}
+                                        onClick={(e) => setFocusInputOnClick(e)}
+                                    />
                                     <Calendar className="iconCalendarLeft" />
                                     <Line className="line" />
-                                    <input className="inputOrder " />
+                                    <input
+                                        className="inputOrder "
+                                        id="calendarDeliverTo"
+                                        onChange={(e) => setValueFilter({ value: e.target.value, property: "calendarDeliverTo" })}
+                                        onClick={(e) => setFocusInputOnClick(e)} />
                                     <Calendar className="iconCalendarRight" />
                                 </div>
                                 <label className="label" htmlFor="calendarDeliver">

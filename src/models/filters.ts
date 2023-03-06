@@ -28,4 +28,8 @@ export interface Filters {
     claimType?: InputValue[];
     product?: InputValue[];
     recipientPhone?: string;
+    calendarDeliverFrom?: string;
+    calendarDeliverTo?: string;
+    calendarCreateFrom?: string;
+    calendarCreateTo?: string;
 }
