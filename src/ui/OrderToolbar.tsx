@@ -7,13 +7,18 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import Fade from "@mui/material/Fade";
 import PopupState, { bindToggle, bindPopper } from "material-ui-popup-state";
+import { fetchFilteredOrders } from "store/tableState";
+import { useAppDispatch } from "hooks/use-redux";
 
 const OrderToolbar = () => {
+    const dispatch = useAppDispatch();
     return (
         <div className="OrderToolbar">
             <div className="TitleText">Заказы</div>
             <div className="buttonGroup">
-                <IconLabelButton iconName={<Refresh />} onClick={() => { }}>
+                <IconLabelButton iconName={<Refresh />} onClick={() => {
+                    dispatch(fetchFilteredOrders())
+                }}>
                     Обновить
                 </IconLabelButton>
 

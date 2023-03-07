@@ -1,24 +1,27 @@
 import axios from "axios";
 
-export const HOST_URL = `https://online.staging.dostaevsky.ru`
-// export const HOST_URL = "https://dost.strio.ru"
-export const API_URL = HOST_URL + `/operator/api`;
-export const SINGNIN_URL = HOST_URL + `/signin`;
+// export const HOST_URL = https://online.staging.dostaevsky.ru
+export const HOST_URL = "https://dost.strio.ru"
+export const API_URL = HOST_URL + "/operator/api";
+export const SINGNIN_URL = HOST_URL + "/signin";
+
+
+console.log("API_URL = ", API_URL)
 
 const api = axios.create({
-    withCredentials: true,
+    //withCredentials: true,
     baseURL: API_URL,
     headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+        // "Access-Control-Allow-Origin": "*",
+        // "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
     }
 });
-
+/*
 api.interceptors.request.use((config) => {
     let tokens = JSON.parse(localStorage.getItem("tokens"));
-    config.headers.Authorization = `Bearer ${tokens.id_token}`;
+    config.headers.Authorization = Bearer ${tokens.id_token};
     return config;
 });
 
@@ -31,7 +34,7 @@ api.interceptors.response.use(
         if (error.response.status === 401 && error.config && !error.config._isRetry) {
             originalRequest._isRetry = true;
             try {
-                const response = await api.get(`/auth/refresh`);
+                const response = await api.get(/auth/refresh);
                 let tokens = JSON.parse(localStorage.getItem("tokens"));
                 if (!tokens) tokens = {};
 
@@ -41,7 +44,7 @@ api.interceptors.response.use(
 
                 return api.request(originalRequest);
             } catch (e) {
-                // console.log("пользователь не авторизирован")
+                console.log("пользователь не авторизирован")
 
                 window.location.href = SINGNIN_URL;
             }
@@ -49,5 +52,5 @@ api.interceptors.response.use(
         throw error;
     }
 );
-
+*/
 export default api;

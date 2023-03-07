@@ -155,20 +155,24 @@ function Orders() {
                             />
                             {dataFilters.openClientPhone && (
                                 <List className="InputList">
-                                    {dataFilters.clientPhone.map((phone) => {
-                                        return (
-                                            <ListItemButton key={phone} onClick={() => handlerPhoneClick(phone)}>
-                                                <ListItemText
-                                                    primary={
-                                                        <Typography className="InputListItemText">
-                                                            +{phone.slice(0, clientPhoneFetch.length)}
-                                                            <span>{phone.slice(clientPhoneFetch.length)}</span>
-                                                        </Typography>
-                                                    }
-                                                />
-                                            </ListItemButton>
-                                        );
-                                    })}
+                                    <>
+                                        {console.log("dataFilters.clientPhone = ", dataFilters.clientPhone)}
+                                        {Array.isArray(clientPhone) ? (dataFilters.clientPhone.map((phone) => {
+
+                                            return (
+                                                <ListItemButton key={phone} onClick={() => handlerPhoneClick(phone)}>
+                                                    <ListItemText
+                                                        primary={
+                                                            <Typography className="InputListItemText">
+                                                                +{phone.slice(0, clientPhoneFetch.length)}
+                                                                <span>{phone.slice(clientPhoneFetch.length)}</span>
+                                                            </Typography>
+                                                        }
+                                                    />
+                                                </ListItemButton>
+                                            );
+                                        })) : null}
+                                    </>
                                 </List>
                             )}
 

@@ -76,7 +76,7 @@ const columns: GridColDef[] = [
 
 function TableOrders() {
     const table = useAppSelector((state) => state.table);
-    console.log(" table = ", table)
+    // console.log(" table = ", table)
     const dataFilters = useAppSelector((state) => state.dataFilters);
     const dispatch = useAppDispatch();
 
@@ -96,15 +96,27 @@ function TableOrders() {
             const dataCity = dataFilters.data.cities.find((city) => city.id === order.city_id);
             return {
                 ...order,
-                // client_phone: "+" + client_phone,
                 city_name: dataCity.name
             };
         });
     }
 
     useEffect(() => {
+        console.log("Был вызван useEffect внутри TableOrdersCustom.tsx")
         dispatch(fetchFilteredOrders());
     }, [dispatch]);
+
+    useEffect(() => {
+        console.log("Была вызвана функция useEffect внутри TableOrdersCustom")
+        const timerId = setInterval(() => {
+            console.log("Сработал внутри setInterval! Был вызван Dispatch!")
+            dispatch(fetchFilteredOrders());
+        }, 300000);
+        return (() => {
+            console.log("Предыдущий эффект setInterval() был отменён")
+            clearInterval(timerId)
+        })
+    }, [dispatch])
 
     return (
         <div>
