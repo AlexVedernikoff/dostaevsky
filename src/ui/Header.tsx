@@ -12,13 +12,16 @@ import { Buffer } from "buffer";
 
 function Header() {
 
-    const tokens = JSON.parse(localStorage.getItem("tokens"));
-    const decodeToken = Buffer.from(tokens.access_token, 'base64').toString('utf-8')
-    const regexp = /"unique_name":".*?"/gi;
-    const matches_array = decodeToken.match(regexp);
-    const name = (matches_array[0].split(":"))[1].slice(1, -1)
-    // console.log("Достаём имя пользователя из token: ", name);
-
+    function parseNameFromToken() {
+        const tokens = JSON.parse(localStorage.getItem("tokens"));
+        if (!tokens) return;
+        const decodeToken = Buffer.from(tokens.access_token, 'base64').toString('utf-8')
+        const regexp = /"unique_name":".*?"/gi;
+        const matches_array = decodeToken.match(regexp);
+        const name = (matches_array[0].split(":"))[1].slice(1, -1)
+        // console.log("Достаём имя пользователя из token: ", name);
+        return name;
+    }
 
     return (
         <>
@@ -50,10 +53,15 @@ function Header() {
                 </div>
                 <div className="UserLoginGroup">
                     <div className="UserName">
-                        <p>{name}</p >
+                        <p>{parseNameFromToken()}</p>
                     </div>
                     <ImageAvatar />
-                    <Link className="containerLogOut" to={"/auth"}>
+                    {/* <Link className="containerLogOut" to={"/auth"}> */}
+                    <Link className="containerLogOut" to={"../"}
+                        onClick={() => {
+                            console.log("Вы кликнули на logout")
+                            localStorage.clear()
+                        }}>
                         <LogOut />
                     </Link>
                 </div>
