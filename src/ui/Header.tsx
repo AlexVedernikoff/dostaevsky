@@ -8,8 +8,17 @@ import { IconLabelButton, ImageAvatar } from "./common";
 import Divider from "@mui/material/Divider";
 import { roleList } from "../data/dataHeader";
 import { customStylesHeader } from "../ui/common";
+import { Buffer } from "buffer";
 
 function Header() {
+
+    const tokens = JSON.parse(localStorage.getItem("tokens"));
+    const decodeToken = Buffer.from(tokens.access_token, 'base64').toString('utf-8')
+    const regexp = /"unique_name":".*?"/gi;
+    const matches_array = decodeToken.match(regexp);
+    const name = (matches_array[0].split(":"))[1].slice(1, -1)
+    // console.log("Достаём имя пользователя из token: ", name);
+
 
     return (
         <>
@@ -34,14 +43,14 @@ function Header() {
                         />
                     </div>
                     <div className="HeaderButton">
-                        <IconLabelButton iconName={<Phone className="PhoneIcon" />} onClick={() => {}}>
+                        <IconLabelButton iconName={<Phone className="PhoneIcon" />} onClick={() => { }}>
                             Телефония
                         </IconLabelButton>
                     </div>
                 </div>
                 <div className="UserLoginGroup">
                     <div className="UserName">
-                        <p></p>
+                        <p>{name}</p >
                     </div>
                     <ImageAvatar />
                     <Link className="containerLogOut" to={"/auth"}>
