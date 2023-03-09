@@ -6,7 +6,7 @@ class OrdersDataService {
         return api.get("/orders");
     }
 
-    getSortedByField(field, type = "asc") {
+    getSortedByField(field = "id", type = "asc") {
         return api.get("/orders", {
             params: {
                 sort_by: `${field}__${type}`

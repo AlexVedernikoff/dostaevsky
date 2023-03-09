@@ -5,7 +5,7 @@ import "../../styles/TableStyles.scss";
 import { getFormatTimeFromIso8601, getTypeDelay } from "../../application";
 import { Footer, NoRowsOverlay, IconChannel, OrderNumber, BrandIcon, StatusIcon, Deliver, FeedbackIcon } from "../common";
 import { useAppDispatch, useAppSelector } from "hooks/use-redux";
-import { fetchFilteredOrders } from "store/tableState";
+import { fetchFilteredOrders, fetchSortedOrders } from "store/tableState";
 
 const columns: GridColDef[] = [
     {
@@ -119,8 +119,17 @@ function TableOrders() {
     }, [dispatch])
 
 
-    const onRowClick = () => {
-        console.log("Вы кликнули на таблицу!")
+    // const onColumnHeaderClick = (event) => {
+    //     // console.log("Вы кликнули на таблицу!")
+    //     dispatch(fetchSortedOrders());
+    // }
+    const onSortModelChange = (newSortModel) => {
+        if (newSortModel[0]) {
+            console.log(newSortModel[0])
+            // console.log("поле(field): ", newSortModel[0].field, " тип_сортировки(sort): ", newSortModel[0].sort)
+            dispatch(fetchSortedOrders([newSortModel[0].field, newSortModel[0].sort]));
+        }
+
     }
 
     return (
@@ -159,7 +168,9 @@ function TableOrders() {
                             NoRowsOverlay
                         }}
                         hideFooterSelectedRowCount={true}
-                        onColumnHeaderClick={onRowClick}
+                        // onColumnHeaderClick={onColumnHeaderClick}
+                        // onCellClick={onColumnHeaderClick}
+                        onSortModelChange={onSortModelChange}
                     />
                 </div>
             </Box>

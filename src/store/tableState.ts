@@ -18,6 +18,7 @@ export const fetchFilteredOrders = createAsyncThunk<Content, undefined, { reject
     "table/fetchFilteredOrders",
     async (_, { rejectWithValue, getState }) => {
         const params = getState();
+
         const notEmptyParams = {}
 
         for (let key in params.mainFilters.FilterableFields) {
@@ -26,11 +27,24 @@ export const fetchFilteredOrders = createAsyncThunk<Content, undefined, { reject
                 notEmptyParams[key] = params.mainFilters.FilterableFields[key]
             }
         }
+        console.log("notEmptyParams = ", notEmptyParams)
 
         const { data } = await OrdersDataService.getFiltered(notEmptyParams);
+
         return data;
     }
 );
+
+export const fetchSortedOrders = createAsyncThunk<Content, Array<string>, { rejectValue: string; state: { mainFilters: StateMain } }>(
+    "table/fetchSortedOrders",
+    async ([field, type], { rejectWithValue, getState }) => {
+
+        const { data } = await OrdersDataService.getSortedByField(field, type);
+        return data;
+    }
+);
+
+
 
 const tableSlice = createSlice({
     name: "table",
@@ -51,7 +65,19 @@ const tableSlice = createSlice({
             .addCase(fetchFilteredOrders.rejected, (state) => {
                 console.log("Запрос на сервер отклонён с ошибкой!")
                 state.isLoading = false;
-            });
+            })
+            .addCase(fetchSortedOrders.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(fetchSortedOrders.fulfilled, (state, action) => {
+                state.orders = action.payload.orders;
+                state.summary = action.payload.summary;
+                state.isLoading = false;
+            })
+            .addCase(fetchSortedOrders.rejected, (state) => {
+                console.log("Запрос на сервер отклонён с ошибкой!")
+                state.isLoading = false;
+            })
     }
 });
 
