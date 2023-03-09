@@ -118,6 +118,11 @@ function TableOrders() {
         })
     }, [dispatch])
 
+
+    const onRowClick = () => {
+        console.log("Вы кликнули на таблицу!")
+    }
+
     return (
         <div>
             <Box
@@ -154,6 +159,7 @@ function TableOrders() {
                             NoRowsOverlay
                         }}
                         hideFooterSelectedRowCount={true}
+                        onColumnHeaderClick={onRowClick}
                     />
                 </div>
             </Box>
