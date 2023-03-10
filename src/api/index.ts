@@ -16,11 +16,26 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-    let tokens = JSON.parse(localStorage.getItem("tokens"));
-    if (!tokens) {
-        window.location.href = SIGNIN_URL;
+    let tokens_value = localStorage.getItem("tokens")
+
+    if (!tokens_value) {
+
+        console.log('redirect to signin from api.request')
+
+        window.location.href = SIGNIN_URL
     } else {
-        config.headers.Authorization = `Bearer ${tokens.access_token}`;
+        let tokens = {
+            id_token: null
+        }
+
+        try {
+            tokens = JSON.parse(tokens_value);
+        } catch (e) {
+            localStorage.removeItem("tokens")
+            return config;
+        }
+
+        config.headers.Authorization = `Bearer ${tokens.id_token}`;
     }
     return config;
 });
@@ -30,21 +45,23 @@ api.interceptors.response.use(
         return config;
     },
     async (error) => {
-        const originalRequest = error.config;
+        const originalRequest = error.config
         if (error.response.status === 401 && error.config && !error.config._isRetry) {
-            originalRequest._isRetry = true;
+            originalRequest._isRetry = true
             try {
-                const response = await api.post(`/auth/refresh`);
-                let tokens = JSON.parse(localStorage.getItem("tokens"));
-                if (!tokens) tokens = {};
+                const response = await api.post(`/auth/refresh`)
 
-                tokens = response.data;
+                let tokens = response.data
 
-                localStorage.setItem("tokens", JSON.stringify(tokens));
+                console.log('token was refreshed', tokens)
+
+                localStorage.setItem("tokens", JSON.stringify(tokens))
 
                 return api.request(originalRequest);
             } catch (e) {
-                window.location.href = SIGNIN_URL;
+                console.log('redirect to signin from api.response')
+
+                window.location.href = SIGNIN_URL
             }
         }
         throw error;
@@ -52,5 +69,3 @@ api.interceptors.response.use(
 );
 
 export default api;
-
-
