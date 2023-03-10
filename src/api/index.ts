@@ -38,6 +38,7 @@ api.interceptors.response.use(
                 let tokens = JSON.parse(localStorage.getItem("tokens"));
                 if (!tokens) tokens = {};
 
+                console.log("refresh_token  = ", `Bearer ${tokens.refresh_token}`)
 
                 const response = await api.post(`/auth/refresh`,
                     {
