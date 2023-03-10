@@ -111,18 +111,13 @@ function TableOrders() {
         const timerId = setInterval(() => {
             console.log("Сработал внутри setInterval! Был вызван Dispatch!")
             dispatch(fetchFilteredOrders());
-        }, 300000);
+        }, 30000);
         return (() => {
             console.log("Предыдущий эффект setInterval() был отменён")
             clearInterval(timerId)
         })
     }, [dispatch])
 
-
-    // const onColumnHeaderClick = (event) => {
-    //     // console.log("Вы кликнули на таблицу!")
-    //     dispatch(fetchSortedOrders());
-    // }
     const onSortModelChange = (newSortModel) => {
         if (newSortModel[0]) {
             console.log(newSortModel[0])
@@ -168,8 +163,6 @@ function TableOrders() {
                             NoRowsOverlay
                         }}
                         hideFooterSelectedRowCount={true}
-                        // onColumnHeaderClick={onColumnHeaderClick}
-                        // onCellClick={onColumnHeaderClick}
                         onSortModelChange={onSortModelChange}
                     />
                 </div>
