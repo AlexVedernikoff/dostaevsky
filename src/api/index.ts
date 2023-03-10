@@ -20,7 +20,7 @@ api.interceptors.request.use((config) => {
     if (!tokens) {
         window.location.href = SIGNIN_URL;
     } else {
-        config.headers.Authorization = `Bearer ${tokens.access_token}`;
+        config.headers.Authorization = `Bearer ${tokens.id_token}`;
     }
     return config;
 });
@@ -34,9 +34,18 @@ api.interceptors.response.use(
         if (error.response.status === 401 && error.config && !error.config._isRetry) {
             originalRequest._isRetry = true;
             try {
-                const response = await api.post(`/auth/refresh`);
+                // const response = await api.post(`/auth/refresh`);
                 let tokens = JSON.parse(localStorage.getItem("tokens"));
                 if (!tokens) tokens = {};
+
+
+                const response = await api.post(`/auth/refresh`,
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${tokens.refresh_token}`
+                        }
+                    })
+
 
                 tokens = response.data;
 
