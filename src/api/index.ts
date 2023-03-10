@@ -17,20 +17,20 @@ const api = axios.create({
 
 api.interceptors.request.use((config) => {
     let tokens_value = localStorage.getItem("tokens")
-
-    if (!tokens_value) {
+    
+    if (!tokens_value){
 
         console.log('redirect to signin from api.request')
 
-        window.location.href = SIGNIN_URL
+        window.location.href = SIGNIN_URL   
     } else {
         let tokens = {
-            id_token: null
+            id_token : null
         }
 
         try {
             tokens = JSON.parse(tokens_value);
-        } catch (e) {
+        } catch(e) {
             localStorage.removeItem("tokens")
             return config;
         }
