@@ -5,7 +5,7 @@ import "../../styles/TableStyles.scss";
 import { getFormatTimeFromIso8601, getTypeDelay } from "../../application";
 import { Footer, NoRowsOverlay, IconChannel, OrderNumber, BrandIcon, StatusIcon, Deliver, FeedbackIcon } from "../common";
 import { useAppDispatch, useAppSelector } from "hooks/use-redux";
-import { fetchFilteredOrders } from "store/tableState";
+import { fetchFilteredOrders, fetchSortedOrders } from "store/tableState";
 
 const columns: GridColDef[] = [
     {
@@ -80,7 +80,6 @@ function TableOrders() {
     const dataFilters = useAppSelector((state) => state.dataFilters);
     const dispatch = useAppDispatch();
 
-
     let orders = table.orders.map(order => {
         return {
             ...order,
@@ -88,7 +87,6 @@ function TableOrders() {
             total_price: order.total_price.toLocaleString('ru')
         };
     })
-
 
     if (dataFilters.isReceived) {
         orders = orders.map((order) => {
@@ -111,12 +109,21 @@ function TableOrders() {
         const timerId = setInterval(() => {
             console.log("Сработал внутри setInterval! Был вызван Dispatch!")
             dispatch(fetchFilteredOrders());
-        }, 300000);
+        }, 30000);
         return (() => {
             console.log("Предыдущий эффект setInterval() был отменён")
             clearInterval(timerId)
         })
     }, [dispatch])
+
+    const onSortModelChange = (newSortModel) => {
+        if (newSortModel[0]) {
+            console.log(newSortModel[0])
+            // console.log("поле(field): ", newSortModel[0].field, " тип_сортировки(sort): ", newSortModel[0].sort)
+            dispatch(fetchSortedOrders([newSortModel[0].field, newSortModel[0].sort]));
+        }
+
+    }
 
     return (
         <div>
@@ -154,6 +161,7 @@ function TableOrders() {
                             NoRowsOverlay
                         }}
                         hideFooterSelectedRowCount={true}
+                        onSortModelChange={onSortModelChange}
                     />
                 </div>
             </Box>
@@ -162,3 +170,5 @@ function TableOrders() {
 }
 
 export default TableOrders;
+
+

@@ -7,7 +7,6 @@ import debounce from "utils/debounce";
 
 import { data } from "../../data/dataOrder";
 
-
 export const CustomSelect = (props: any) => {
     console.log("Рендер компонента CustomSelect")
 
@@ -94,3 +93,5 @@ export const CustomSelect = (props: any) => {
         />
     );
 }
+
+
