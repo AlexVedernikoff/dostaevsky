@@ -16,6 +16,7 @@ function Header() {
         const tokens = JSON.parse(localStorage.getItem("tokens"));
         if (!tokens) return;
         const decodeToken = Buffer.from(tokens.access_token, 'base64').toString('utf-8')
+        // console.log("decodeToken = ", decodeToken)
         const regexp = /"unique_name":".*?"/gi;
         const matches_array = decodeToken.match(regexp);
         const name = (matches_array[0].split(":"))[1].slice(1, -1)

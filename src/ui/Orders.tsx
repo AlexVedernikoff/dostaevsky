@@ -89,10 +89,15 @@ function Orders() {
         if (debouncedClientPhone) {
             const value = clientPhone.replace(/[^0-9]/g, "");
 
-            if (value.length >= 4 && value.length < 11) {
-                setClientPhoneFetch(value);
-                dispatch(fetchClientPhone(value));
-            } else if (value.length === 11) {
+            // if (value.length >= 4 && value.length < 11) {
+            //     setClientPhoneFetch(value);
+            //     dispatch(fetchClientPhone(value));
+            // } else if (value.length === 11) {
+            //     dispatch(toggleClientPhone(false));
+            //     setValueFilter({ value: value, property: "number_telephone" });
+            // }
+
+            if (value.length === 11) {
                 dispatch(toggleClientPhone(false));
                 setValueFilter({ value: value, property: "number_telephone" });
             }
