@@ -100,18 +100,18 @@ function TableOrders() {
     }
 
     useEffect(() => {
-        console.log("Был вызван useEffect внутри TableOrdersCustom.tsx")
+        // console.log("Был вызван useEffect внутри TableOrdersCustom.tsx")
         dispatch(fetchFilteredOrders());
     }, [dispatch]);
 
     useEffect(() => {
-        console.log("Была вызвана функция useEffect внутри TableOrdersCustom")
+        // console.log("Была вызвана функция useEffect внутри TableOrdersCustom")
         const timerId = setInterval(() => {
             console.log("Сработал внутри setInterval! Был вызван Dispatch!")
             dispatch(fetchFilteredOrders());
         }, 30000);
         return (() => {
-            console.log("Предыдущий эффект setInterval() был отменён")
+            // console.log("Предыдущий эффект setInterval() был отменён")
             clearInterval(timerId)
         })
     }, [dispatch])
