@@ -382,6 +382,7 @@ function Modals() {
                                     <input
                                         className="inputOrder "
                                         id="calendarCreateTo"
+                                        defaultValue={getDefaultValue(stateModal.filters.calendarCreateTo)}
                                         onChange={(e) => setValueFilter({ value: e.target.value, property: "calendarCreateTo" })}
                                         onClick={(e) => setFocusInputOnClick(e)} />
                                     <Calendar className="iconCalendarRight" />
@@ -395,6 +396,7 @@ function Modals() {
                                     <input
                                         className="inputOrder "
                                         id="calendarDeliverFrom"
+                                        defaultValue={getDefaultValue(stateModal.filters.calendarDeliverFrom)}
                                         onChange={(e) => setValueFilter({ value: e.target.value, property: "calendarDeliverFrom" })}
                                         onClick={(e) => setFocusInputOnClick(e)}
                                     />
@@ -403,6 +405,7 @@ function Modals() {
                                     <input
                                         className="inputOrder "
                                         id="calendarDeliverTo"
+                                        defaultValue={getDefaultValue(stateModal.filters.calendarDeliverTo)}
                                         onChange={(e) => setValueFilter({ value: e.target.value, property: "calendarDeliverTo" })}
                                         onClick={(e) => setFocusInputOnClick(e)} />
                                     <Calendar className="iconCalendarRight" />
