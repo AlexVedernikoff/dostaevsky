@@ -8,21 +8,10 @@ import debounce from "utils/debounce";
 import { data } from "../../data/dataOrder";
 
 export const CustomSelect = (props: any) => {
-    if (props.property === "status_order") {
-        console.log("Рендер компонента CustomSelect")
-        console.log("props.defaultValue = ", props.defaultValue)
-    }
-
-    // const button = document.getElementById("SubmitButton");
-    // console.log("button = ", button)
-
-    // useEffect(() => {
-    //     button.addEventListener("click", () => {
-    //         console.log("Вы кликнули на кнопку")
-    //     })
-
-    // })
-
+    // if (props.property === "status_order") {
+    //     console.log("Рендер компонента CustomSelect")
+    //     console.log("props.defaultValue = ", props.defaultValue)
+    // }
 
     const dispatch = useAppDispatch();
     const options = props.multi ? (props.options.length !== props.defaultValue.length ? [data.typeSelect.ALL, ...props.options] : [data.typeSelect.RESET, ...props.options]) : props.options;
@@ -52,20 +41,11 @@ export const CustomSelect = (props: any) => {
 
     }
 
-    // const debouncedDispatchChange = debounce(dispatchChanges, 500)
     const debouncedDispatchChange = debounce(dispatchChanges, 0)
 
     const state = useAppSelector(state => state.modal)
     // console.log("Окно со всеми фильрами открыто = ", state.open)
 
-    useEffect(() => {
-        return (() => {
-            // if (state.open) {
-            //     debouncedDispatchChange(selectedOptions)
-            // }
-            console.log("Произошло размонтирование компонента CustomSelect!")
-        })
-    })
 
     return (
         <Select
@@ -116,9 +96,6 @@ export const CustomSelect = (props: any) => {
                     console.log("Мы здесь!! сработало событие onChange")
                     debouncedDispatchChange(selected)
                 }
-                // if (state.open) {
-                //     debouncedDispatchChange(selected)
-                // }
             }}
         />
     );
