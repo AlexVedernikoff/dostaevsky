@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useAppDispatch } from "hooks/use-redux";
+import React, { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "hooks/use-redux";
 import Select from "react-select";
 import { MultiValue, InputOption } from ".";
 import { customStylesOrders } from ".";
@@ -8,13 +8,13 @@ import debounce from "utils/debounce";
 import { data } from "../../data/dataOrder";
 
 export const CustomSelect = (props: any) => {
-    console.log("Рендер компонента CustomSelect")
+    // console.log("Рендер компонента CustomSelect")
 
     const dispatch = useAppDispatch();
     const options = props.multi ? (props.options.length !== props.defaultValue.length ? [data.typeSelect.ALL, ...props.options] : [data.typeSelect.RESET, ...props.options]) : props.options;
     const [selectedOptions, setSelected] = useState(props.defaultValue);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    console.log("isModalOpen = ", isModalOpen)
+    // console.log("isModalOpen = ", isModalOpen)
     // console.log("selectedOptions 17 = ", selectedOptions)
     function dispatchChanges(selected) {
         // console.log("Сработало событие dispatchChanges")
@@ -39,6 +39,18 @@ export const CustomSelect = (props: any) => {
     }
 
     const debouncedDispatchChange = debounce(dispatchChanges, 500)
+
+    const state = useAppSelector(state => state.modal)
+    // console.log("Окно со всеми фильрами открыто = ", state.open)
+
+    useEffect(() => {
+        return (() => {
+            // if (state.open) {
+            //     debouncedDispatchChange(selectedOptions)
+            // }
+            // console.log("Произошло размонтирование компонента CustomSelect!")
+        })
+    })
 
     return (
         <Select
@@ -89,6 +101,9 @@ export const CustomSelect = (props: any) => {
                     // console.log("Мы здесь!! onChange")
                     debouncedDispatchChange(selected)
                 }
+                // if (state.open) {
+                //     debouncedDispatchChange(selected)
+                // }
             }}
         />
     );

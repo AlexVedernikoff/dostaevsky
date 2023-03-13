@@ -415,13 +415,19 @@ function Modals() {
                         <div className="buttonGroup">
                             <MainButton onClick={() => resetFilters()}>Сбросить</MainButton>
                             <div className="SubmitButton">
-                                <MainButton onClick={() => applyFilters()}>Применить</MainButton>
+                                {/* <MainButton onClick={() => applyFilters()}>Применить</MainButton> */}
+                                <MainButton onClick={() => {
+                                    // changeSelect()
+                                    applyFilters()
+                                }}>Применить</MainButton>
+
+
                             </div>
                         </div>
                     </div>
                 </Box>
             </Fade>
-        </Modal>
+        </Modal >
     );
 }
 

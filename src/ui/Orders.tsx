@@ -161,22 +161,24 @@ function Orders() {
                             {dataFilters.openClientPhone && (
                                 <List className="InputList">
                                     <>
-                                        {console.log("dataFilters.clientPhone = ", dataFilters.clientPhone)}
-                                        {Array.isArray(clientPhone) ? (dataFilters.clientPhone.map((phone) => {
+                                        {Array.isArray(dataFilters.clientPhone) ?
+                                            (
 
-                                            return (
-                                                <ListItemButton key={phone} onClick={() => handlerPhoneClick(phone)}>
-                                                    <ListItemText
-                                                        primary={
-                                                            <Typography className="InputListItemText">
-                                                                +{phone.slice(0, clientPhoneFetch.length)}
-                                                                <span>{phone.slice(clientPhoneFetch.length)}</span>
-                                                            </Typography>
-                                                        }
-                                                    />
-                                                </ListItemButton>
-                                            );
-                                        })) : null}
+                                                dataFilters.clientPhone.map((phone) => {
+                                                    return (
+                                                        <ListItemButton key={phone} onClick={() => handlerPhoneClick(phone)}>
+                                                            <ListItemText
+                                                                primary={
+                                                                    <Typography className="InputListItemText">
+                                                                        <b>+{`${phone.slice(0, 1)}(${phone.slice(1, 4)})${phone.slice(4, clientPhoneFetch.length)}`}</b>
+                                                                        <span>{phone.slice(clientPhoneFetch.length)}</span>
+                                                                    </Typography>
+                                                                }
+                                                            />
+                                                        </ListItemButton>
+                                                    );
+                                                })) : null
+                                        }
                                     </>
                                 </List>
                             )}
@@ -260,10 +262,10 @@ function Orders() {
                         </MainButton>
                     </div>
                 </div>
-            </div>
+            </div >
             <TableOrdersCustom />
             <Modals />
-        </div>
+        </div >
     );
 }
 
