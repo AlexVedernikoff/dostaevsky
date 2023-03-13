@@ -8,7 +8,21 @@ import debounce from "utils/debounce";
 import { data } from "../../data/dataOrder";
 
 export const CustomSelect = (props: any) => {
-    // console.log("Рендер компонента CustomSelect")
+    if (props.property === "status_order") {
+        console.log("Рендер компонента CustomSelect")
+        console.log("props.defaultValue = ", props.defaultValue)
+    }
+
+    // const button = document.getElementById("SubmitButton");
+    // console.log("button = ", button)
+
+    // useEffect(() => {
+    //     button.addEventListener("click", () => {
+    //         console.log("Вы кликнули на кнопку")
+    //     })
+
+    // })
+
 
     const dispatch = useAppDispatch();
     const options = props.multi ? (props.options.length !== props.defaultValue.length ? [data.typeSelect.ALL, ...props.options] : [data.typeSelect.RESET, ...props.options]) : props.options;
@@ -38,7 +52,8 @@ export const CustomSelect = (props: any) => {
 
     }
 
-    const debouncedDispatchChange = debounce(dispatchChanges, 500)
+    // const debouncedDispatchChange = debounce(dispatchChanges, 500)
+    const debouncedDispatchChange = debounce(dispatchChanges, 0)
 
     const state = useAppSelector(state => state.modal)
     // console.log("Окно со всеми фильрами открыто = ", state.open)
@@ -48,7 +63,7 @@ export const CustomSelect = (props: any) => {
             // if (state.open) {
             //     debouncedDispatchChange(selectedOptions)
             // }
-            // console.log("Произошло размонтирование компонента CustomSelect!")
+            console.log("Произошло размонтирование компонента CustomSelect!")
         })
     })
 
@@ -74,7 +89,7 @@ export const CustomSelect = (props: any) => {
             }}
             onMenuClose={() => {
                 setIsModalOpen(false)
-                // console.log("Сработало событие onMenuClose")
+                console.log("Сработало событие onMenuClose")
                 const selected = selectedOptions
                 // console.log("selectedOptions 64 = ", selectedOptions)
                 if (!selected.find((option) => option.value === 0 || option.value === -1)) {
@@ -85,10 +100,10 @@ export const CustomSelect = (props: any) => {
             }
             onChange={(selected) => {
 
-                // console.log("selected = ", selected)
-                // for (let el of selected) {
-                //     console.log(el);
-                // }
+                console.log("selected = ", selected)
+                for (let el of selected) {
+                    console.log(el);
+                }
                 setSelected(selected);
                 // console.log("Сработало событие onChange")
                 // console.log(props)
@@ -98,7 +113,7 @@ export const CustomSelect = (props: any) => {
                     debouncedDispatchChange(selected)
                 }
                 if (!isModalOpen) {
-                    // console.log("Мы здесь!! onChange")
+                    console.log("Мы здесь!! сработало событие onChange")
                     debouncedDispatchChange(selected)
                 }
                 // if (state.open) {

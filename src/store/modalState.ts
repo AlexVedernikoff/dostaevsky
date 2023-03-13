@@ -14,7 +14,7 @@ const modalSlice = createSlice({
     reducers: {
         openStateModal(state, action: PayloadAction<PayloadMainState>) {
             state.open = true;
-            console.log("Была вызвана функция openStateModal!")
+            // console.log("Была вызвана функция openStateModal!")
             state.filters = action.payload.value;
         },
         closeStateModal(state) {

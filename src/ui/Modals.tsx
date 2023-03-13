@@ -54,6 +54,11 @@ function Modals() {
         }
     });
 
+    const parentFunction = () => {
+        console.log("Сработала функция, определённая в родительском компоненте!")
+
+    }
+
     const setFocusInputOnClick = (e) => {
         setFocusedInput(e.target.id)
     }
@@ -421,6 +426,7 @@ function Modals() {
                                 {/* <MainButton onClick={() => applyFilters()}>Применить</MainButton> */}
                                 <MainButton onClick={() => {
                                     // changeSelect()
+                                    // parentFunction()
                                     applyFilters()
                                 }}>Применить</MainButton>
 

@@ -27,7 +27,7 @@ export const fetchFilteredOrders = createAsyncThunk<Content, undefined, { reject
                 notEmptyParams[key] = params.mainFilters.FilterableFields[key]
             }
         }
-        console.log("notEmptyParams = ", notEmptyParams)
+        // console.log("notEmptyParams = ", notEmptyParams)
 
         const { data } = await OrdersDataService.getFiltered(notEmptyParams);
 

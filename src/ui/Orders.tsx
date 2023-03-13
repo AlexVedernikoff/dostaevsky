@@ -97,10 +97,6 @@ function Orders() {
                 setValueFilter({ value: value, property: "number_telephone" });
             }
 
-            // if (value.length === 11) {
-            //     dispatch(toggleClientPhone(false));
-            //     setValueFilter({ value: value, property: "number_telephone" });
-            // }
         }
     }, [debouncedClientPhone]);
 
