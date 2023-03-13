@@ -36,7 +36,7 @@ const dataFilters = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchDataFilters.pending, (state) => {
-            console.log("Запрос 2 на сервер получение информации о заказах с учётом фильтров")
+            // console.log("Запрос 2 на сервер получение информации о заказах с учётом фильтров")
             state.isLoading = true;
         });
         builder.addCase(fetchDataFilters.fulfilled, (state, action) => {

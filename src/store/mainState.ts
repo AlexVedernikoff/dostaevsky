@@ -40,8 +40,8 @@ const mainFiltersSlice = createSlice({
         },
         changeMainState(state, action: PayloadAction<PayloadMainState>) {
             state.filters = action.payload.value;
-            console.log("Мы внутри функции changeMainState  и action.payload.value = ")
-            console.log(action.payload.value)
+            // console.log("Мы внутри функции changeMainState  и action.payload.value = ")
+            // console.log(action.payload.value)
 
             for (const value in action.payload.value) {
                 let field = getFilterableFields(value, action.payload.value[value]);

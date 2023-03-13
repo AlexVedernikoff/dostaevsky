@@ -107,7 +107,7 @@ function TableOrders() {
     useEffect(() => {
         // console.log("Была вызвана функция useEffect внутри TableOrdersCustom")
         const timerId = setInterval(() => {
-            console.log("Сработал внутри setInterval! Был вызван Dispatch!")
+            // console.log("Сработал внутри setInterval! Был вызван Dispatch!")
             dispatch(fetchFilteredOrders());
         }, 30000);
         return (() => {
@@ -118,7 +118,7 @@ function TableOrders() {
 
     const onSortModelChange = (newSortModel) => {
         if (newSortModel[0]) {
-            console.log(newSortModel[0])
+            // console.log(newSortModel[0])
             // console.log("поле(field): ", newSortModel[0].field, " тип_сортировки(sort): ", newSortModel[0].sort)
             dispatch(fetchSortedOrders([newSortModel[0].field, newSortModel[0].sort]));
         }

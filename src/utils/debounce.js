@@ -1,7 +1,7 @@
 function debounce(callback, delay) {
     let timer;
     return function (...args) {
-        console.log(args)
+        // console.log(args)
         clearTimeout(timer);
         timer = setTimeout((() => {
             callback.apply(this, args)

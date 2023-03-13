@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "hooks/use-redux";
 import Select from "react-select";
 import { MultiValue, InputOption } from ".";
@@ -41,9 +41,9 @@ export const CustomSelect = (props: any) => {
 
     }
 
-    const debouncedDispatchChange = debounce(dispatchChanges, 0)
+    // const debouncedDispatchChange = debounce(dispatchChanges, 0)
 
-    const state = useAppSelector(state => state.modal)
+    // const state = useAppSelector(state => state.modal)
     // console.log("Окно со всеми фильрами открыто = ", state.open)
 
 
@@ -69,32 +69,32 @@ export const CustomSelect = (props: any) => {
             }}
             onMenuClose={() => {
                 setIsModalOpen(false)
-                console.log("Сработало событие onMenuClose")
+                // console.log("Сработало событие onMenuClose")
                 const selected = selectedOptions
                 // console.log("selectedOptions 64 = ", selectedOptions)
                 if (!selected.find((option) => option.value === 0 || option.value === -1)) {
-                    console.log("Мы здесь!! onMenuClose")
-                    debouncedDispatchChange(selected)
+                    // console.log("Мы здесь!! onMenuClose")
+                    dispatchChanges(selected)
                 }
             }
             }
             onChange={(selected) => {
 
-                console.log("selected = ", selected)
-                for (let el of selected) {
-                    console.log(el);
-                }
+                // console.log("selected = ", selected)
+                // for (let el of selected) {
+                //     console.log(el);
+                // }
                 setSelected(selected);
                 // console.log("Сработало событие onChange")
                 // console.log(props)
 
                 if (selected.find((option) => option.value === 0 || option.value === -1)) {
                     // console.log("Мы здесь!! onChange")
-                    debouncedDispatchChange(selected)
+                    dispatchChanges(selected)
                 }
                 if (!isModalOpen) {
-                    console.log("Мы здесь!! сработало событие onChange")
-                    debouncedDispatchChange(selected)
+                    // console.log("Мы здесь!! сработало событие onChange")
+                    dispatchChanges(selected)
                 }
             }}
         />

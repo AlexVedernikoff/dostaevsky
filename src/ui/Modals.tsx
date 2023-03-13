@@ -213,7 +213,7 @@ function Modals() {
                                         onChange={(e) => setValueFilter({ value: e.target.value, property: "fromAmount" })}
                                         className="inputOrder"
                                         onClick={(e) => {
-                                            console.log("Вы кликнули на элемент", e)
+                                            // console.log("Вы кликнули на элемент", e)
                                             setFocusInputOnClick(e)
                                         }}
                                         id="priceFrom"
@@ -225,7 +225,7 @@ function Modals() {
                                         defaultValue={getDefaultValue(stateModal.filters.toAmount)}
                                         onChange={(e) => setValueFilter({ value: e.target.value, property: "toAmount" })}
                                         onClick={(e) => {
-                                            console.log("Вы кликнули на элемент", e)
+                                            // console.log("Вы кликнули на элемент", e)
                                             setFocusInputOnClick(e)
                                         }}
                                         id="priceTo"
@@ -350,7 +350,6 @@ function Modals() {
                                     onChange={(e) => setValueFilter({ value: e.target.value, property: "recipientPhone" })}
                                     onClick={(e) => setFocusInputOnClick(e)}
                                     className="inputFilter inputOrder"
-                                    // id="phoneNumber"
                                     id="phoneNumberModalRecepient"
                                     type="text"
                                 />

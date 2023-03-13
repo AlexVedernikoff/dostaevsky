@@ -60,7 +60,7 @@ function Header() {
                     {/* <Link className="containerLogOut" to={"/auth"}> */}
                     <Link className="containerLogOut" to={"../"}
                         onClick={() => {
-                            console.log("Вы кликнули на logout")
+                            // console.log("Вы кликнули на logout")
                             localStorage.clear()
                         }}>
                         <LogOut />

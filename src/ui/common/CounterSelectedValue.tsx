@@ -8,6 +8,7 @@ const MoreSelectedBadge = ({ items }) => {
         justifyContent: "center",
         marginLeft: "auto",
         background: "#E6E6E6",
+        // background: "red",
         borderRadius: "4px",
         fontFamily: "Circe",
         fontSize: "11px",

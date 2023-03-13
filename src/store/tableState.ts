@@ -53,17 +53,17 @@ const tableSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchFilteredOrders.pending, (state) => {
-                console.log("Запрос 1 на сервер получение информации о заказах с учётом фильтров")
+                // console.log("Запрос 1 на сервер получение информации о заказах с учётом фильтров")
                 state.isLoading = true;
             })
             .addCase(fetchFilteredOrders.fulfilled, (state, action) => {
-                console.log("Запрос на сервер выполнен успешно")
+                // console.log("Запрос на сервер выполнен успешно")
                 state.orders = action.payload.orders;
                 state.summary = action.payload.summary;
                 state.isLoading = false;
             })
             .addCase(fetchFilteredOrders.rejected, (state) => {
-                console.log("Запрос на сервер отклонён с ошибкой!")
+                // console.log("Запрос на сервер отклонён с ошибкой!")
                 state.isLoading = false;
             })
             .addCase(fetchSortedOrders.pending, (state) => {
@@ -75,7 +75,7 @@ const tableSlice = createSlice({
                 state.isLoading = false;
             })
             .addCase(fetchSortedOrders.rejected, (state) => {
-                console.log("Запрос на сервер отклонён с ошибкой!")
+                // console.log("Запрос на сервер отклонён с ошибкой!")
                 state.isLoading = false;
             })
     }

@@ -30,17 +30,23 @@ export const InputOption: any = ({ getStyles, Icon, isDisabled, isFocused, isSel
 
     return (
         <components.Option {...rest} {...props} isDisabled={isDisabled} isFocused={isFocused} isSelected={isSelected} getStyles={getStyles} innerProps={props}>
-            {props.id[props.id.length - 1] !== "0" ? (
-                <>
-                    <label className="label rowCheckbox">
-                        <input id="checkbox-id" type="checkbox" checked={isSelected} onChange={() => { }} />
-                        <label className="label labelCheckbox" htmlFor="checkbox-id"></label>
-                    </label>
-                    {children}
-                </>
-            ) : (
-                <div style={{ color: "#7B59CE" }}>{children}</div>
-            )}
-        </components.Option>
+
+            {
+                // props.id[props.id.length - 1] !== "0" ? (
+                props.id.split("-").slice(-1)[0] !== "0" ? (
+                    <>
+                        <label className="label rowCheckbox">
+                            <input id="checkbox-id" type="checkbox" checked={isSelected} onChange={() => { }} />
+                            <label className="label labelCheckbox" htmlFor="checkbox-id"></label>
+                        </label>
+                        {children}
+                    </>
+                ) : (
+                    <>
+                        <div style={{ color: "#7B59CE" }}>{children}</div>
+                    </>
+                )
+            }
+        </components.Option >
     );
 };
