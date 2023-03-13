@@ -164,20 +164,21 @@ function Orders() {
                                         {Array.isArray(dataFilters.clientPhone) ?
                                             (
 
-                                                dataFilters.clientPhone.map((phone) => {
-                                                    return (
-                                                        <ListItemButton key={phone} onClick={() => handlerPhoneClick(phone)}>
-                                                            <ListItemText
-                                                                primary={
-                                                                    <Typography className="InputListItemText">
-                                                                        <b>+{`${phone.slice(0, 1)}(${phone.slice(1, 4)})${phone.slice(4, clientPhoneFetch.length)}`}</b>
-                                                                        <span>{phone.slice(clientPhoneFetch.length)}</span>
-                                                                    </Typography>
-                                                                }
-                                                            />
-                                                        </ListItemButton>
-                                                    );
-                                                })) : null
+                                                dataFilters.clientPhone.filter(phone => phone.includes(clientPhoneFetch))
+                                                    .map((phone) => {
+                                                        return (
+                                                            <ListItemButton key={phone} onClick={() => handlerPhoneClick(phone)}>
+                                                                <ListItemText
+                                                                    primary={
+                                                                        <Typography className="InputListItemText">
+                                                                            <b>+{`${phone.slice(0, 1)}(${phone.slice(1, 4)})${phone.slice(4, clientPhoneFetch.length)}`}</b>
+                                                                            <span>{phone.slice(clientPhoneFetch.length)}</span>
+                                                                        </Typography>
+                                                                    }
+                                                                />
+                                                            </ListItemButton>
+                                                        );
+                                                    })) : null
                                         }
                                     </>
                                 </List>
