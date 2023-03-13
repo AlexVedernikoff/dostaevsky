@@ -90,7 +90,7 @@ function TableOrders() {
 
     if (dataFilters.isReceived) {
         orders = orders.map((order) => {
-            console.log("order = ", order)
+            // console.log("order = ", order)
             const dataCity = dataFilters.data.cities.find((city) => city.id === order.city_id);
             return {
                 ...order,
